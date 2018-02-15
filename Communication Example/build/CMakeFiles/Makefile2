@@ -54,82 +54,82 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cukal/Desktop/C++
+CMAKE_SOURCE_DIR = /home/marko/proj
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cukal/Desktop/C++/build
+CMAKE_BINARY_DIR = /home/marko/proj/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/helloworld.dir
+# Target rules for target CMakeFiles/main.dir
 
 # All Build rule for target.
-CMakeFiles/helloworld.dir/all:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/depend
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cukal/Desktop/C++/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target helloworld"
-.PHONY : CMakeFiles/helloworld.dir/all
+CMakeFiles/main.dir/all:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marko/proj/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target main"
+.PHONY : CMakeFiles/main.dir/all
 
 # Include target in all.
-all: CMakeFiles/helloworld.dir/all
+all: CMakeFiles/main.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/helloworld.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cukal/Desktop/C++/build/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/helloworld.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cukal/Desktop/C++/build/CMakeFiles 0
-.PHONY : CMakeFiles/helloworld.dir/rule
+CMakeFiles/main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marko/proj/build/CMakeFiles 6
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marko/proj/build/CMakeFiles 0
+.PHONY : CMakeFiles/main.dir/rule
 
 # Convenience name for target.
-helloworld: CMakeFiles/helloworld.dir/rule
+main: CMakeFiles/main.dir/rule
 
-.PHONY : helloworld
-
-# clean rule for target.
-CMakeFiles/helloworld.dir/clean:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/clean
-.PHONY : CMakeFiles/helloworld.dir/clean
+.PHONY : main
 
 # clean rule for target.
-clean: CMakeFiles/helloworld.dir/clean
+CMakeFiles/main.dir/clean:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
+.PHONY : CMakeFiles/main.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/main.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/helloworld-Runner.dir
+# Target rules for target CMakeFiles/main-Runner.dir
 
 # All Build rule for target.
-CMakeFiles/helloworld-Runner.dir/all:
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/depend
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cukal/Desktop/C++/build/CMakeFiles --progress-num=8,9,10,11,12 "Built target helloworld-Runner"
-.PHONY : CMakeFiles/helloworld-Runner.dir/all
+CMakeFiles/main-Runner.dir/all:
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/depend
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marko/proj/build/CMakeFiles --progress-num=7,8,9,10 "Built target main-Runner"
+.PHONY : CMakeFiles/main-Runner.dir/all
 
 # Include target in all.
-all: CMakeFiles/helloworld-Runner.dir/all
+all: CMakeFiles/main-Runner.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/helloworld-Runner.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cukal/Desktop/C++/build/CMakeFiles 5
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/helloworld-Runner.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cukal/Desktop/C++/build/CMakeFiles 0
-.PHONY : CMakeFiles/helloworld-Runner.dir/rule
+CMakeFiles/main-Runner.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marko/proj/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main-Runner.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marko/proj/build/CMakeFiles 0
+.PHONY : CMakeFiles/main-Runner.dir/rule
 
 # Convenience name for target.
-helloworld-Runner: CMakeFiles/helloworld-Runner.dir/rule
+main-Runner: CMakeFiles/main-Runner.dir/rule
 
-.PHONY : helloworld-Runner
-
-# clean rule for target.
-CMakeFiles/helloworld-Runner.dir/clean:
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/clean
-.PHONY : CMakeFiles/helloworld-Runner.dir/clean
+.PHONY : main-Runner
 
 # clean rule for target.
-clean: CMakeFiles/helloworld-Runner.dir/clean
+CMakeFiles/main-Runner.dir/clean:
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/clean
+.PHONY : CMakeFiles/main-Runner.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/main-Runner.dir/clean
 
 .PHONY : clean
 

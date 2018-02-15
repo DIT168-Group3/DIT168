@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cukal/Desktop/C++
+CMAKE_SOURCE_DIR = /home/marko/proj
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cukal/Desktop/C++/build
+CMAKE_BINARY_DIR = /home/marko/proj/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,17 +67,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -89,11 +78,22 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cukal/Desktop/C++/build/CMakeFiles /home/cukal/Desktop/C++/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marko/proj/build/CMakeFiles /home/marko/proj/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cukal/Desktop/C++/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marko/proj/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,60 +122,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named helloworld
+# Target rules for targets named main
 
 # Build rule for target.
-helloworld: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 helloworld
-.PHONY : helloworld
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-helloworld/fast:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/build
-.PHONY : helloworld/fast
+main/fast:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named helloworld-Runner
+# Target rules for targets named main-Runner
 
 # Build rule for target.
-helloworld-Runner: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 helloworld-Runner
-.PHONY : helloworld-Runner
+main-Runner: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main-Runner
+.PHONY : main-Runner
 
 # fast build rule for target.
-helloworld-Runner/fast:
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/build
-.PHONY : helloworld-Runner/fast
-
-PrimeChecker.o: PrimeChecker.cpp.o
-
-.PHONY : PrimeChecker.o
-
-# target to build an object file
-PrimeChecker.cpp.o:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/PrimeChecker.cpp.o
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o
-.PHONY : PrimeChecker.cpp.o
-
-PrimeChecker.i: PrimeChecker.cpp.i
-
-.PHONY : PrimeChecker.i
-
-# target to preprocess a source file
-PrimeChecker.cpp.i:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/PrimeChecker.cpp.i
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.i
-.PHONY : PrimeChecker.cpp.i
-
-PrimeChecker.s: PrimeChecker.cpp.s
-
-.PHONY : PrimeChecker.s
-
-# target to generate assembly for a file
-PrimeChecker.cpp.s:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/PrimeChecker.cpp.s
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.s
-.PHONY : PrimeChecker.cpp.s
+main-Runner/fast:
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/build
+.PHONY : main-Runner/fast
 
 Reciever.o: Reciever.cpp.o
 
@@ -183,7 +153,7 @@ Reciever.o: Reciever.cpp.o
 
 # target to build an object file
 Reciever.cpp.o:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/Reciever.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Reciever.cpp.o
 .PHONY : Reciever.cpp.o
 
 Reciever.i: Reciever.cpp.i
@@ -192,7 +162,7 @@ Reciever.i: Reciever.cpp.i
 
 # target to preprocess a source file
 Reciever.cpp.i:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/Reciever.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Reciever.cpp.i
 .PHONY : Reciever.cpp.i
 
 Reciever.s: Reciever.cpp.s
@@ -201,7 +171,7 @@ Reciever.s: Reciever.cpp.s
 
 # target to generate assembly for a file
 Reciever.cpp.s:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/Reciever.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Reciever.cpp.s
 .PHONY : Reciever.cpp.s
 
 Sender.o: Sender.cpp.o
@@ -210,7 +180,7 @@ Sender.o: Sender.cpp.o
 
 # target to build an object file
 Sender.cpp.o:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/Sender.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Sender.cpp.o
 .PHONY : Sender.cpp.o
 
 Sender.i: Sender.cpp.i
@@ -219,7 +189,7 @@ Sender.i: Sender.cpp.i
 
 # target to preprocess a source file
 Sender.cpp.i:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/Sender.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Sender.cpp.i
 .PHONY : Sender.cpp.i
 
 Sender.s: Sender.cpp.s
@@ -228,7 +198,7 @@ Sender.s: Sender.cpp.s
 
 # target to generate assembly for a file
 Sender.cpp.s:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/Sender.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Sender.cpp.s
 .PHONY : Sender.cpp.s
 
 TestPrimeChecker.o: TestPrimeChecker.cpp.o
@@ -237,7 +207,7 @@ TestPrimeChecker.o: TestPrimeChecker.cpp.o
 
 # target to build an object file
 TestPrimeChecker.cpp.o:
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/TestPrimeChecker.cpp.o
 .PHONY : TestPrimeChecker.cpp.o
 
 TestPrimeChecker.i: TestPrimeChecker.cpp.i
@@ -246,7 +216,7 @@ TestPrimeChecker.i: TestPrimeChecker.cpp.i
 
 # target to preprocess a source file
 TestPrimeChecker.cpp.i:
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.i
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/TestPrimeChecker.cpp.i
 .PHONY : TestPrimeChecker.cpp.i
 
 TestPrimeChecker.s: TestPrimeChecker.cpp.s
@@ -255,35 +225,35 @@ TestPrimeChecker.s: TestPrimeChecker.cpp.s
 
 # target to generate assembly for a file
 TestPrimeChecker.cpp.s:
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.s
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/TestPrimeChecker.cpp.s
 .PHONY : TestPrimeChecker.cpp.s
 
-helloworld.o: helloworld.cpp.o
+main.o: main.cpp.o
 
-.PHONY : helloworld.o
+.PHONY : main.o
 
 # target to build an object file
-helloworld.cpp.o:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/helloworld.cpp.o
-.PHONY : helloworld.cpp.o
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-helloworld.i: helloworld.cpp.i
+main.i: main.cpp.i
 
-.PHONY : helloworld.i
+.PHONY : main.i
 
 # target to preprocess a source file
-helloworld.cpp.i:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/helloworld.cpp.i
-.PHONY : helloworld.cpp.i
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-helloworld.s: helloworld.cpp.s
+main.s: main.cpp.s
 
-.PHONY : helloworld.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-helloworld.cpp.s:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/helloworld.cpp.s
-.PHONY : helloworld.cpp.s
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 messages.o: messages.cpp.o
 
@@ -291,8 +261,8 @@ messages.o: messages.cpp.o
 
 # target to build an object file
 messages.cpp.o:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/messages.cpp.o
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/messages.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/messages.cpp.o
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/messages.cpp.o
 .PHONY : messages.cpp.o
 
 messages.i: messages.cpp.i
@@ -301,8 +271,8 @@ messages.i: messages.cpp.i
 
 # target to preprocess a source file
 messages.cpp.i:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/messages.cpp.i
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/messages.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/messages.cpp.i
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/messages.cpp.i
 .PHONY : messages.cpp.i
 
 messages.s: messages.cpp.s
@@ -311,8 +281,8 @@ messages.s: messages.cpp.s
 
 # target to generate assembly for a file
 messages.cpp.s:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/messages.cpp.s
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/messages.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/messages.cpp.s
+	$(MAKE) -f CMakeFiles/main-Runner.dir/build.make CMakeFiles/main-Runner.dir/messages.cpp.s
 .PHONY : messages.cpp.s
 
 # Help Target
@@ -322,13 +292,10 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... test"
-	@echo "... helloworld"
-	@echo "... rebuild_cache"
-	@echo "... helloworld-Runner"
+	@echo "... main"
 	@echo "... edit_cache"
-	@echo "... PrimeChecker.o"
-	@echo "... PrimeChecker.i"
-	@echo "... PrimeChecker.s"
+	@echo "... main-Runner"
+	@echo "... rebuild_cache"
 	@echo "... Reciever.o"
 	@echo "... Reciever.i"
 	@echo "... Reciever.s"
@@ -338,9 +305,9 @@ help:
 	@echo "... TestPrimeChecker.o"
 	@echo "... TestPrimeChecker.i"
 	@echo "... TestPrimeChecker.s"
-	@echo "... helloworld.o"
-	@echo "... helloworld.i"
-	@echo "... helloworld.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... messages.o"
 	@echo "... messages.i"
 	@echo "... messages.s"

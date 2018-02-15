@@ -1,26 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp
+Change Dir: /home/marko/proj/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_afccb/fast"
-make[1]: Entering directory '/home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_afccb.dir/build.make CMakeFiles/cmTC_afccb.dir/build
-make[2]: Entering directory '/home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_afccb.dir/CheckSymbolExists.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_afccb.dir/CheckSymbolExists.c.o   -c /home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_afccb
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_afccb.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_afccb.dir/CheckSymbolExists.c.o  -o cmTC_afccb -rdynamic 
-CMakeFiles/cmTC_afccb.dir/CheckSymbolExists.c.o: In function `main':
+Run Build Command:"/usr/bin/make" "cmTC_4e96a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4e96a.dir/build.make CMakeFiles/cmTC_4e96a.dir/build
+make[1]: Entering directory '/home/marko/proj/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4e96a.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_4e96a.dir/CheckSymbolExists.c.o   -c /home/marko/proj/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_4e96a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4e96a.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_4e96a.dir/CheckSymbolExists.c.o  -o cmTC_4e96a -rdynamic 
+CMakeFiles/cmTC_4e96a.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_afccb.dir/build.make:97: recipe for target 'cmTC_afccb' failed
-make[2]: *** [cmTC_afccb] Error 1
-make[2]: Leaving directory '/home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_afccb/fast' failed
-make[1]: *** [cmTC_afccb/fast] Error 2
-make[1]: Leaving directory '/home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_4e96a.dir/build.make:97: recipe for target 'cmTC_4e96a' failed
+make[1]: *** [cmTC_4e96a] Error 1
+make[1]: Leaving directory '/home/marko/proj/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_4e96a/fast' failed
+make: *** [cmTC_4e96a/fast] Error 2
 
-File /home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/marko/proj/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -36,24 +34,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp
+Change Dir: /home/marko/proj/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4ce0c/fast"
-make[1]: Entering directory '/home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_4ce0c.dir/build.make CMakeFiles/cmTC_4ce0c.dir/build
-make[2]: Entering directory '/home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_4ce0c.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_4ce0c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_4ce0c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4ce0c.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_4ce0c.dir/CheckFunctionExists.c.o  -o cmTC_4ce0c -rdynamic -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTC_e9313/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e9313.dir/build.make CMakeFiles/cmTC_e9313.dir/build
+make[1]: Entering directory '/home/marko/proj/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e9313.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_e9313.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e9313
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9313.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_e9313.dir/CheckFunctionExists.c.o  -o cmTC_e9313 -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_4ce0c.dir/build.make:97: recipe for target 'cmTC_4ce0c' failed
-make[2]: *** [cmTC_4ce0c] Error 1
-make[2]: Leaving directory '/home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_4ce0c/fast' failed
-make[1]: *** [cmTC_4ce0c/fast] Error 2
-make[1]: Leaving directory '/home/cukal/Desktop/C++/build/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_e9313.dir/build.make:97: recipe for target 'cmTC_e9313' failed
+make[1]: *** [cmTC_e9313] Error 1
+make[1]: Leaving directory '/home/marko/proj/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_e9313/fast' failed
+make: *** [cmTC_e9313/fast] Error 2
 
 

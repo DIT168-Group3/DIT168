@@ -6,25 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/cukal/Desktop/C++/PrimeChecker.cpp
-PrimeChecker.hpp
-/home/cukal/Desktop/C++/PrimeChecker.hpp
-
-/home/cukal/Desktop/C++/PrimeChecker.hpp
-cstdint
--
-
-/home/cukal/Desktop/C++/TestPrimeChecker.cpp
+/home/marko/proj/TestPrimeChecker.cpp
 catch.hpp
-/home/cukal/Desktop/C++/catch.hpp
-PrimeChecker.hpp
-/home/cukal/Desktop/C++/PrimeChecker.hpp
+/home/marko/proj/catch.hpp
 
-/home/cukal/Desktop/C++/build/messages.cpp
+/home/marko/proj/build/messages.cpp
 messages.hpp
 -
 
-/home/cukal/Desktop/C++/catch.hpp
+/home/marko/proj/catch.hpp
 TargetConditionals.h
 -
 iosfwd
@@ -260,7 +250,7 @@ string
 memory
 -
 Foundation/Foundation.h
-/home/cukal/Desktop/C++/Foundation/Foundation.h
+/home/marko/proj/Foundation/Foundation.h
 signal.h
 -
 crtdbg.h

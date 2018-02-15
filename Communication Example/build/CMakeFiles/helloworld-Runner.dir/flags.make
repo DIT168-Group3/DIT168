@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /home/cukal/Desktop/C++/build 
+CXX_INCLUDES = -isystem /home/marko/proj/build 
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cukal/Desktop/C++
+CMAKE_SOURCE_DIR = /home/marko/proj
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cukal/Desktop/C++/build
+CMAKE_BINARY_DIR = /home/marko/proj/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/helloworld-Runner.dir/depend.make
@@ -58,22 +58,22 @@ include CMakeFiles/helloworld-Runner.dir/progress.make
 include CMakeFiles/helloworld-Runner.dir/flags.make
 
 messages.cpp: ../messages.odvd
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cukal/Desktop/C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating messages.cpp"
-	cluon-msc --cpp-sources --cpp-add-include-file=messages.hpp - -out=/home/cukal/Desktop/C++/build/messages.cpp /home/cukal/Desktop/C++/messages.odvd
-	cluon-msc --cpp-headers -- out=/home/cukal/Desktop/C++/build/messages.hpp /home/cukal/Desktop/C++/messages.odvd
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marko/proj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating messages.cpp"
+	cluon-msc --cpp-sources --cpp-add-include-file=messages.hpp - -out=/home/marko/proj/build/messages.cpp /home/marko/proj/messages.odvd
+	cluon-msc --cpp-headers -- out=/home/marko/proj/build/messages.hpp /home/marko/proj/messages.odvd
 
 CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o: CMakeFiles/helloworld-Runner.dir/flags.make
 CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o: ../TestPrimeChecker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cukal/Desktop/C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o -c /home/cukal/Desktop/C++/TestPrimeChecker.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marko/proj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o -c /home/marko/proj/TestPrimeChecker.cpp
 
 CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cukal/Desktop/C++/TestPrimeChecker.cpp > CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marko/proj/TestPrimeChecker.cpp > CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.i
 
 CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cukal/Desktop/C++/TestPrimeChecker.cpp -o CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marko/proj/TestPrimeChecker.cpp -o CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.s
 
 CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o.requires:
 
@@ -86,42 +86,18 @@ CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o.provides: CMakeFiles/hel
 CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o.provides.build: CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o
 
 
-CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o: CMakeFiles/helloworld-Runner.dir/flags.make
-CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o: ../PrimeChecker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cukal/Desktop/C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o -c /home/cukal/Desktop/C++/PrimeChecker.cpp
-
-CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cukal/Desktop/C++/PrimeChecker.cpp > CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.i
-
-CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cukal/Desktop/C++/PrimeChecker.cpp -o CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.s
-
-CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o.requires:
-
-.PHONY : CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o.requires
-
-CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o.provides: CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o.requires
-	$(MAKE) -f CMakeFiles/helloworld-Runner.dir/build.make CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o.provides.build
-.PHONY : CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o.provides
-
-CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o.provides.build: CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o
-
-
 CMakeFiles/helloworld-Runner.dir/messages.cpp.o: CMakeFiles/helloworld-Runner.dir/flags.make
 CMakeFiles/helloworld-Runner.dir/messages.cpp.o: messages.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cukal/Desktop/C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/helloworld-Runner.dir/messages.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/helloworld-Runner.dir/messages.cpp.o -c /home/cukal/Desktop/C++/build/messages.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marko/proj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/helloworld-Runner.dir/messages.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/helloworld-Runner.dir/messages.cpp.o -c /home/marko/proj/build/messages.cpp
 
 CMakeFiles/helloworld-Runner.dir/messages.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/helloworld-Runner.dir/messages.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cukal/Desktop/C++/build/messages.cpp > CMakeFiles/helloworld-Runner.dir/messages.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marko/proj/build/messages.cpp > CMakeFiles/helloworld-Runner.dir/messages.cpp.i
 
 CMakeFiles/helloworld-Runner.dir/messages.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/helloworld-Runner.dir/messages.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cukal/Desktop/C++/build/messages.cpp -o CMakeFiles/helloworld-Runner.dir/messages.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marko/proj/build/messages.cpp -o CMakeFiles/helloworld-Runner.dir/messages.cpp.s
 
 CMakeFiles/helloworld-Runner.dir/messages.cpp.o.requires:
 
@@ -137,19 +113,17 @@ CMakeFiles/helloworld-Runner.dir/messages.cpp.o.provides.build: CMakeFiles/hello
 # Object files for target helloworld-Runner
 helloworld__Runner_OBJECTS = \
 "CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o" \
-"CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o" \
 "CMakeFiles/helloworld-Runner.dir/messages.cpp.o"
 
 # External object files for target helloworld-Runner
 helloworld__Runner_EXTERNAL_OBJECTS =
 
 helloworld-Runner: CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o
-helloworld-Runner: CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o
 helloworld-Runner: CMakeFiles/helloworld-Runner.dir/messages.cpp.o
 helloworld-Runner: CMakeFiles/helloworld-Runner.dir/build.make
 helloworld-Runner: /usr/lib/libcluon.so
 helloworld-Runner: CMakeFiles/helloworld-Runner.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cukal/Desktop/C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable helloworld-Runner"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/marko/proj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable helloworld-Runner"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/helloworld-Runner.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -158,7 +132,6 @@ CMakeFiles/helloworld-Runner.dir/build: helloworld-Runner
 .PHONY : CMakeFiles/helloworld-Runner.dir/build
 
 CMakeFiles/helloworld-Runner.dir/requires: CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o.requires
-CMakeFiles/helloworld-Runner.dir/requires: CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o.requires
 CMakeFiles/helloworld-Runner.dir/requires: CMakeFiles/helloworld-Runner.dir/messages.cpp.o.requires
 
 .PHONY : CMakeFiles/helloworld-Runner.dir/requires
@@ -168,6 +141,6 @@ CMakeFiles/helloworld-Runner.dir/clean:
 .PHONY : CMakeFiles/helloworld-Runner.dir/clean
 
 CMakeFiles/helloworld-Runner.dir/depend: messages.cpp
-	cd /home/cukal/Desktop/C++/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cukal/Desktop/C++ /home/cukal/Desktop/C++ /home/cukal/Desktop/C++/build /home/cukal/Desktop/C++/build /home/cukal/Desktop/C++/build/CMakeFiles/helloworld-Runner.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/marko/proj/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/marko/proj /home/marko/proj /home/marko/proj/build /home/marko/proj/build /home/marko/proj/build/CMakeFiles/helloworld-Runner.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/helloworld-Runner.dir/depend
 

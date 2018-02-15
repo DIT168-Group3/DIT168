@@ -1,5 +1,5 @@
-/home/cukal/Desktop/C++/build/CMakeFiles/test.dir
-/home/cukal/Desktop/C++/build/CMakeFiles/helloworld.dir
-/home/cukal/Desktop/C++/build/CMakeFiles/rebuild_cache.dir
-/home/cukal/Desktop/C++/build/CMakeFiles/helloworld-Runner.dir
-/home/cukal/Desktop/C++/build/CMakeFiles/edit_cache.dir
+/home/marko/proj/build/CMakeFiles/test.dir
+/home/marko/proj/build/CMakeFiles/main.dir
+/home/marko/proj/build/CMakeFiles/edit_cache.dir
+/home/marko/proj/build/CMakeFiles/main-Runner.dir
+/home/marko/proj/build/CMakeFiles/rebuild_cache.dir

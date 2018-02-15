@@ -4,11 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cukal/Desktop/C++/PrimeChecker.cpp" "/home/cukal/Desktop/C++/build/CMakeFiles/helloworld.dir/PrimeChecker.cpp.o"
-  "/home/cukal/Desktop/C++/Reciever.cpp" "/home/cukal/Desktop/C++/build/CMakeFiles/helloworld.dir/Reciever.cpp.o"
-  "/home/cukal/Desktop/C++/Sender.cpp" "/home/cukal/Desktop/C++/build/CMakeFiles/helloworld.dir/Sender.cpp.o"
-  "/home/cukal/Desktop/C++/helloworld.cpp" "/home/cukal/Desktop/C++/build/CMakeFiles/helloworld.dir/helloworld.cpp.o"
-  "/home/cukal/Desktop/C++/build/messages.cpp" "/home/cukal/Desktop/C++/build/CMakeFiles/helloworld.dir/messages.cpp.o"
+  "/home/marko/proj/Reciever.cpp" "/home/marko/proj/build/CMakeFiles/helloworld.dir/Reciever.cpp.o"
+  "/home/marko/proj/Sender.cpp" "/home/marko/proj/build/CMakeFiles/helloworld.dir/Sender.cpp.o"
+  "/home/marko/proj/helloworld.cpp" "/home/marko/proj/build/CMakeFiles/helloworld.dir/helloworld.cpp.o"
+  "/home/marko/proj/build/messages.cpp" "/home/marko/proj/build/CMakeFiles/helloworld.dir/messages.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -4,9 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cukal/Desktop/C++/PrimeChecker.cpp" "/home/cukal/Desktop/C++/build/CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o"
-  "/home/cukal/Desktop/C++/TestPrimeChecker.cpp" "/home/cukal/Desktop/C++/build/CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o"
-  "/home/cukal/Desktop/C++/build/messages.cpp" "/home/cukal/Desktop/C++/build/CMakeFiles/helloworld-Runner.dir/messages.cpp.o"
+  "/home/marko/proj/TestPrimeChecker.cpp" "/home/marko/proj/build/CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o"
+  "/home/marko/proj/build/messages.cpp" "/home/marko/proj/build/CMakeFiles/helloworld-Runner.dir/messages.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

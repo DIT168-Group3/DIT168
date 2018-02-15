@@ -6,19 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/cukal/Desktop/C++/PrimeChecker.cpp
-PrimeChecker.hpp
-/home/cukal/Desktop/C++/PrimeChecker.hpp
-
-/home/cukal/Desktop/C++/PrimeChecker.hpp
-cstdint
--
-
-/home/cukal/Desktop/C++/Reciever.cpp
+/home/marko/proj/Reciever.cpp
 Reciever.hpp
-/home/cukal/Desktop/C++/Reciever.hpp
+/home/marko/proj/Reciever.hpp
 
-/home/cukal/Desktop/C++/Reciever.hpp
+/home/marko/proj/Reciever.hpp
 cstdint
 -
 chrono
@@ -28,17 +20,17 @@ iostream
 sstream
 -
 cluon/OD4Session.hpp
-/home/cukal/Desktop/C++/cluon/OD4Session.hpp
+/home/marko/proj/cluon/OD4Session.hpp
 cluon/Envelope.hpp
-/home/cukal/Desktop/C++/cluon/Envelope.hpp
+/home/marko/proj/cluon/Envelope.hpp
 messages.hpp
-/home/cukal/Desktop/C++/messages.hpp
+/home/marko/proj/messages.hpp
 
-/home/cukal/Desktop/C++/Sender.cpp
+/home/marko/proj/Sender.cpp
 Sender.hpp
-/home/cukal/Desktop/C++/Sender.hpp
+/home/marko/proj/Sender.hpp
 
-/home/cukal/Desktop/C++/Sender.hpp
+/home/marko/proj/Sender.hpp
 cstdint
 -
 chrono
@@ -48,17 +40,17 @@ iostream
 sstream
 -
 cluon/OD4Session.hpp
-/home/cukal/Desktop/C++/cluon/OD4Session.hpp
+/home/marko/proj/cluon/OD4Session.hpp
 cluon/Envelope.hpp
-/home/cukal/Desktop/C++/cluon/Envelope.hpp
+/home/marko/proj/cluon/Envelope.hpp
 messages.hpp
-/home/cukal/Desktop/C++/messages.hpp
+/home/marko/proj/messages.hpp
 
-/home/cukal/Desktop/C++/build/messages.cpp
+/home/marko/proj/build/messages.cpp
 messages.hpp
 -
 
-/home/cukal/Desktop/C++/helloworld.cpp
+/home/marko/proj/helloworld.cpp
 cstdint
 -
 chrono
@@ -68,17 +60,17 @@ iostream
 sstream
 -
 cluon/OD4Session.hpp
-/home/cukal/Desktop/C++/cluon/OD4Session.hpp
+/home/marko/proj/cluon/OD4Session.hpp
 cluon/Envelope.hpp
-/home/cukal/Desktop/C++/cluon/Envelope.hpp
+/home/marko/proj/cluon/Envelope.hpp
 messages.hpp
-/home/cukal/Desktop/C++/messages.hpp
+/home/marko/proj/messages.hpp
 Sender.hpp
-/home/cukal/Desktop/C++/Sender.hpp
+/home/marko/proj/Sender.hpp
 Reciever.hpp
-/home/cukal/Desktop/C++/Reciever.hpp
+/home/marko/proj/Reciever.hpp
 
-/home/cukal/Desktop/C++/messages.hpp
+/home/marko/proj/messages.hpp
 cstdint
 -
 string
