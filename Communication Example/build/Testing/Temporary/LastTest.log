@@ -1,0 +1,21 @@
+Start testing: Feb 09 09:31 CET
+----------------------------------------------------------
+1/1 Testing: helloworld-Runner
+1/1 Test: helloworld-Runner
+Command: "/home/cukal/Desktop/C++/build/helloworld-Runner"
+Directory: /home/cukal/Desktop/C++/build
+"helloworld-Runner" start time: Feb 09 09:31 CET
+Output:
+----------------------------------------------------------
+===============================================================================
+All tests passed (3 assertions in 3 test cases)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"helloworld-Runner" end time: Feb 09 09:31 CET
+"helloworld-Runner" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Feb 09 09:31 CET
