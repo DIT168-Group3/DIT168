@@ -1,3 +1,6 @@
+# DIT168-Project-Industrial IT and Embedded Systems 
+Link: https://github.com/martincukal/Group-3-DIT168-Project-Industrial-IT-and-Embedded-Systems
+
 # Introduction
 
 The purpose of this project is to develop a self-driving vehicle by working on an embedded system that can be divided into sub-systems. 
