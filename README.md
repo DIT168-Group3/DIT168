@@ -25,13 +25,14 @@ Mention that the team will work on seperate branches depending on the feature cu
 # Cloning, building and testing the project steps
 
 For Linux:
-After the repository is cloned you should open a terminal inside the Communication example folder.
-In the terminal write “ mkdir build ” to create a build directory for the binaries.
-Copy messages.cpp and messages.hpp into the build folder
-Go inside the build folder “ cd build “ 
-Run CMake “ cmake .. “
-Run make “ make ”
-Run the generated main binary “ ./main “
-Open a new terminal in the build directory “ CTRL + SHIFT + N “
-Run the generated main binary in the newly opened terminal “ ./main “
-The program will require you to enter a number, after entering it check the second terminal a “ Received message : #number “ should be displayed.
+
+1- After the repository is cloned you should open a terminal inside the Communication example folder.
+2- In the terminal write “ mkdir build ” to create a build directory for the binaries.
+3- Copy messages.cpp and messages.hpp into the build folder
+4- Go inside the build folder “ cd build “ 
+5- Run CMake “ cmake .. “
+6- Run make “ make ”
+7- Run the generated main binary “ ./main “
+8- Open a new terminal in the build directory “ CTRL + SHIFT + N “
+9- Run the generated main binary in the newly opened terminal “ ./main “
+10 The program will require you to enter a number, after entering it check the second terminal a “ Received message : #number “ should be displayed.
