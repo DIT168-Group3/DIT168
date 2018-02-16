@@ -17,4 +17,4 @@ C- Writing: git commit -m “(TO WRITE A COMMENT THAT DESCRIBES CHANGES THAT HAV
   
 D- Writing:  git push (for pushing changes into Github repository).
 
-Note!: If the group’s member is already cloned the files, he should pull changes first (by writing: git pull on git bash terminal) for avoiding mixing up files, getting files conflict or missing files. After that, the group’s member starts working from step 2 (As mentioned above).
+Note!: If the group’s member is already cloned the files, he should pull changes first (by writing: git pull on git bash terminal) for avoiding mixing up files, getting files conflict, losing newest changes or losing files. After that, the group’s member starts working from step 2 (As mentioned above).
