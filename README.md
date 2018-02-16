@@ -1,4 +1,4 @@
-#Introduction
+# Introduction
 
 The purpose of this project is to develop a self-driving vehicle by working on an embedded system that can be divided into sub-systems. 
 
@@ -22,7 +22,7 @@ The team will develop the project by making use of GIT’s branching system. The
 Mention that the team will work on seperate branches depending on the feature currently being worked on. When that feature is working but not 100% stable, we push to beta branch.
 ****************************************************************************************************
 
-#Cloning, building and testing the project steps
+# Cloning, building and testing the project steps
 
 For Linux:
 After the repository is cloned you should open a terminal inside the Communication example folder.
