@@ -13,6 +13,7 @@ The contribution process for each member of the group should be as following:
 A- Opening Git bash terminal.
 
 B- Writing:  git add . (or git add A) to add all changes or new files.
+
 C- Writing: git commit -m “(TO WRITE A COMMENT THAT DESCRIBES CHANGES THAT HAVE BEEN MADE)”.
   
 D- Writing:  git push (for pushing changes into Github repository).
