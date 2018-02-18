@@ -59,7 +59,7 @@ The way this will work is that we will have 3 fixed branches, and a branch for e
 
 ****************************************************************************************************
 
-## How to contribute ?!
+## How to contribute ?
 
-##### Open the contribute form -> [Contribute](https://github.com/martincukal/DIT168/blob/master/CONTRIBUTING.md)
+##### Open the -> [CONTRIBUTE FORM](https://github.com/martincukal/DIT168/blob/master/CONTRIBUTING.md)
 
