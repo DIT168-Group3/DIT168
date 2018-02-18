@@ -32,27 +32,27 @@ The way this will work is that we will have 3 fixed branches, and a branch for e
 
 Linux OS:
 
-1. After the repository is cloned you should open a terminal inside the Communication example folder.
+#### 1. After the repository is cloned you should open a terminal inside the Communication example folder.
 
-2. In the terminal write  to create a build directory for the binaries.
+#### 2. In the terminal write  to create a build directory for the binaries.
 ` mkdir build `
 
-3. Go inside the build folder.
+#### 3. Go inside the build folder.
 `cd build `
 
-4. Run CMake .
+#### 4. Run CMake .
 ` cmake .. `
 
-5. Run make.
+#### 5. Run make.
 ` make `
 
-6. Run the generated main binary to test the program.
+#### 6. Run the generated main binary to test the program.
 ` ./main `
 
-7. Open a new terminal in the build directory.
+#### 7. Open a new terminal in the build directory.
 ` CTRL + SHIFT + N `
 
-8. Run the generated main binary in the newly opened terminal.
+#### 8. Run the generated main binary in the newly opened terminal.
 ` ./main `
 
-9. The program will require you to enter a number, after entering it check the second terminal a “Received message : #number” should be displayed.
+#### 9. The program will require you to enter a number, after entering it check the second terminal a “ Received message : #number ” should be displayed.
