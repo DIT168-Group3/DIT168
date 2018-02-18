@@ -1,9 +1,9 @@
 # DIT168-Project-Industrial IT and Embedded Systems 
-Link: https://github.com/martincukal/Group-3-DIT168-Project-Industrial-IT-and-Embedded-Systems
+Link: https://github.com/martincukal/DIT168
 
 *****************************************************************************************************
 
-# Introduction
+## Introduction
 
 The purpose of this project is to develop a self-driving vehicle by working on an embedded system that can be divided into sub-systems. 
 As a group, we are going to follow some steps to achieve the project’s goal. The steps are:
@@ -20,7 +20,7 @@ As a group, we are going to follow some steps to achieve the project’s goal. T
 
 *****************************************************************************************************
 
-# Git Workflow
+## Git Workflow
 
 The team will develop the project by making use of GIT’s branching system. The workflow we will use for the branches is called feature branching, and the way it works is that we create a branch for every feature being developed, with the end aim of merging them into one branch. To merge these feature branches, we will make use of pull requests, which is created once a feature is done, and its purpose is to create discussion around the commit. We will also make use of pull requests when the work in progress is having trouble fullfilling a requirement. The pull request allows other team members to comment on and provide suggestions for the pull requests.
 
@@ -28,26 +28,31 @@ The way this will work is that we will have 3 fixed branches, and a branch for e
 
 ****************************************************************************************************
 
-# Cloning, building and testing the project steps
+### Cloning, building and testing the project steps
 
-For Linux:
+Linux OS:
 
-1- After the repository is cloned you should open a terminal inside the Communication example folder.
+1. After the repository is cloned you should open a terminal inside the Communication example folder.
 
-2- In the terminal write “ mkdir build ” to create a build directory for the binaries.
+2. In the terminal write  to create a build directory for the binaries.
+` mkdir build `
 
-3- Copy messages.cpp and messages.hpp into the build folder.
+3. Go inside the build folder.
+`cd build `
 
-4- Go inside the build folder “cd build”.
+4. Run CMake .
+` cmake .. `
 
-5- Run CMake “cmake ..”.
+5. Run make.
+` make `
 
-6- Run make “make”.
+6. Run the generated main binary to test the program.
+` ./main `
 
-7- Run the generated main binary “./main”.
+7. Open a new terminal in the build directory.
+` CTRL + SHIFT + N `
 
-8- Open a new terminal in the build directory “CTRL + SHIFT + N”.
+8. Run the generated main binary in the newly opened terminal.
+` ./main `
 
-9- Run the generated main binary in the newly opened terminal “./main”.
-
-10- The program will require you to enter a number, after entering it check the second terminal a “Received message : #number” should be displayed.
+9. The program will require you to enter a number, after entering it check the second terminal a “Received message : #number” should be displayed.
