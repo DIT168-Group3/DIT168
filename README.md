@@ -56,3 +56,10 @@ The way this will work is that we will have 3 fixed branches, and a branch for e
 ` ./main `
 
 ##### 9. The program will require you to enter a number, after entering it check the second terminal a “ Received message : #number ” should be displayed.
+
+****************************************************************************************************
+
+## How to contribute ?!
+
+##### Open the contribute form -> [Contribute](https://github.com/martincukal/DIT168/blob/master/CONTRIBUTING.md)
+
