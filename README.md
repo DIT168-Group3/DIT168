@@ -1,14 +1,12 @@
 # DIT168-Project-Industrial IT and Embedded Systems 
-Link: https://github.com/martincukal/DIT168
+[GitHub Repository](https://github.com/martincukal/DIT168)
 
-*****************************************************************************************************
 
 ## Introduction
 
 The purpose of this repository is to be used for developing a software that controls self-driving vehicle by working on an embedded system that can be divided into subsystems. The vehicle should be able to detect and follow lane by using its sensors. Also, the vehicle will be able to use vehicle-to-vehicle (V2V) technology.
-To accomplish the project’s goal, the project will be designed and implemented using C/C++ programming languages, in addition to, the teacher has provided a useful library that is necessary to be used during the project and it can be found at http://opendavinci.cse.chalmers.se/www/# . Not to mention that the quality standards for this project are very important alongside testing and evaluating it.
+To accomplish the project’s goal, the project will be designed and implemented using C/C++ programming languages, in addition to, the teacher has provided a useful library that is necessary to be used during the project and it can be found at [OpenDaVINCI](http://opendavinci.cse.chalmers.se/www/#) . Not to mention that the quality standards for this project are very important alongside testing and evaluating it.
 
-*****************************************************************************************************
 
 ## Git Workflow
 
@@ -16,9 +14,8 @@ The team will develop the project by making use of GIT’s branching system. The
 
 The way this will work is that we will have 3 fixed branches, and a branch for each feature. While working on each feature, the team will push the changes to the appropriate branch, and once the feature is ready to be tested, it will be pushed to the beta branch. This allows the team to work efficiently on seperate features, and then to focus on integration process afterwards. The beta branch will consist of all the features from the individual feature branches, finally the developer branch will be used for maintaining a stable version of the system. The master branch will be used to store the final version of the system, which will be used for deployment purposes and its goal is to be bug-free.
 
-****************************************************************************************************
 
-### Cloning, building and testing the project steps
+## Cloning, building and testing the project steps
 
 #### Linux OS: This example will change during the development of our system
 
@@ -47,9 +44,8 @@ The way this will work is that we will have 3 fixed branches, and a branch for e
 
 ##### 9. The program will require you to enter a number, after entering it check the second terminal a “ Received message : #number ” should be displayed.
 
-****************************************************************************************************
 
-## How to contribute ?
+## How to contribute
 
-##### Open the -> [CONTRIBUTE FORM](https://github.com/martincukal/DIT168/blob/master/CONTRIBUTING.md)
+##### Open the [CONTRIBUTE FORM](https://github.com/martincukal/DIT168/blob/master/CONTRIBUTING.md)
 
