@@ -4,8 +4,8 @@
 
 ## Introduction
 
-The purpose of this repository is to be used for developing a software that controls self-driving vehicle by working on an embedded system that can be divided into subsystems. The vehicle should be able to detect and follow lane by using its sensors. Also, the vehicle will be able to use vehicle-to-vehicle (V2V) technology.
-To accomplish the project’s goal, the project will be designed and implemented using C/C++ programming languages, in addition to, the teacher has provided a useful library that is necessary to be used during the project and it can be found at [OpenDaVINCI](http://opendavinci.cse.chalmers.se/www/#) . Not to mention that the quality standards for this project are very important alongside testing and evaluating it.
+The purpose of this repository is to be used for developing a software that controls a self-driving vehicle by working on an embedded system that can be divided into subsystems. The vehicle should be able to detect and follow lanes by using its camera and sensors. Also, the vehicle will be able to use vehicle-to-vehicle (V2V) technology.
+to accomplish the project’s goal, the project will be designed and implemented using C++ as a main programming language, in addition to that, the teacher has provided us with a useful library that is necessary to be used during the project and it can be found at [OpenDaVINCI](http://opendavinci.cse.chalmers.se/www/#) . Not to mention that the quality standards for this project are very important alongside testing and evaluating it.
 
 
 ## Git Workflow
