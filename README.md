@@ -5,18 +5,8 @@ Link: https://github.com/martincukal/DIT168
 
 ## Introduction
 
-The purpose of this project is to develop a self-driving vehicle by working on an embedded system that can be divided into sub-systems. 
-As a group, we are going to follow some steps to achieve the project’s goal. The steps are:
-
-1- Working on the project (self-driving vehicle) according to the requirements (functional and non-functional) that are provided by the customer (teacher). 
-
-2- Researching for suitable algorithms that can be implemented, for lane detection, lane following and being used for vehicle-to-vehicle communication (V2V).
-
-3- Implementing and adapting desired algorithms to the project and making sure that they meet the customer’s requirements.
- 
-4- Testing and evaluating the implemented algorithms.
-
-5- Finally, documenting the previous steps; hardware & software that’s used, algorithms (code) that are implemented, test methods that are applied and project’s retrospective (e.g. lessons learned).
+The purpose of this repository is to be used for developing a software that controls  self-driving vehicle by working on an embedded system that can be divided into subsystems. The vehicle should be able to detect and follow lane by using its sensors. Also, the vehicle will be able to use vehicle-to-vehicle (V2V).
+To accomplish the project’s goal, the project will be designed and implemented using C/C++ programming languages, in addition to, the teacher has provided useful library that is necessary to use which can be found at OpenDaVINCI . Not to mention that the quality standards for this project are very important alongside testing and evaluating it.
 
 *****************************************************************************************************
 
