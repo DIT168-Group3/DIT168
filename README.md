@@ -5,8 +5,8 @@ Link: https://github.com/martincukal/DIT168
 
 ## Introduction
 
-The purpose of this repository is to be used for developing a software that controls  self-driving vehicle by working on an embedded system that can be divided into subsystems. The vehicle should be able to detect and follow lane by using its sensors. Also, the vehicle will be able to use vehicle-to-vehicle (V2V).
-To accomplish the project’s goal, the project will be designed and implemented using C/C++ programming languages, in addition to, the teacher has provided useful library that is necessary to use which can be found at OpenDaVINCI . Not to mention that the quality standards for this project are very important alongside testing and evaluating it.
+The purpose of this repository is to be used for developing a software that controls self-driving vehicle by working on an embedded system that can be divided into subsystems. The vehicle should be able to detect and follow lane by using its sensors. Also, the vehicle will be able to use vehicle-to-vehicle (V2V) technology.
+To accomplish the project’s goal, the project will be designed and implemented using C/C++ programming languages, in addition to, the teacher has provided a useful library that is necessary to be used during the project and it can be found at OpenDaVINCI . Not to mention that the quality standards for this project are very important alongside testing and evaluating it.
 
 *****************************************************************************************************
 
