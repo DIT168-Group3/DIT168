@@ -1,21 +1,5 @@
-# How to contribute
+# How to contribute to the project
 
-The contribution process for each member of the group should be as following:
+Contribution to this project will occur in seperate branches, depending on the feature or bug being worked on. Each branch created will follow the same pattern, the feature name will include dashes to seperate words (such as `lane-detection`) while bug fixes should be created in seperate branches, appended by `_fix` such as `lane-detection_fix`. 
 
-1- The group’s member clones repository to his device by using git bash (or ubuntu terminal).
-
-2- The group’s member opens a specific file to work on depending on his specific task.
-
-3- When the group’s member finishes his task, he makes a pull request that should be accepted by all members.
-
-4- After accepting the pull request, the group’s member pushes his code according to the following:
-
-A- Opening Git bash terminal.
-
-B- Writing:  git add . (or git add A) to add all changes or new files.
-
-C- Writing: git commit -m “(TO WRITE A COMMENT THAT DESCRIBES CHANGES THAT HAVE BEEN MADE)”.
-  
-D- Writing:  git push (for pushing changes into Github repository).
-
-Note!: If the group’s member is already cloned the files, he should pull changes first (by writing: git pull on git bash terminal) for avoiding mixing up files, getting files conflict, losing newest changes or losing files. After that, the group’s member starts working from step 2 (As mentioned above).
+Each commit shall be made using a descriptive short summary, followed by a longer descriptive description for bigger commits, using addition symbol for addition(s) and subtraction symbol for subtraction(s) to the code, while bug fixes and refactoring will be represented using an (* asterisk). Bigger commits should be avoided however, and should be split into smaller commits to make it easier to undo changes and find issues. 
