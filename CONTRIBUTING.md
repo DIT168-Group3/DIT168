@@ -8,7 +8,7 @@ Each commit shall be made using a descriptive short summary, followed by a longe
 
 ##### Running and testing the build:
 
-`docker build -t myrepository/mydockerimage -f Dockerfile`
+`docker build -t myrepository/mydockerimage -f Dockerfile .`
 
 `docker run --rm -ti --net=host myrepository/mydockerimage`
 
