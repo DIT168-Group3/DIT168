@@ -13,11 +13,9 @@ add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/messages.cpp
                    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/messages.odvd)
 include_directories(SYSTEM ${CMAKE_BINARY_DIR})
 
-add_executable(${PROJECT_NAME}.Sender ${CMAKE_CURRENT_SOURCE_DIR}/Sender.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
-target_link_libraries(${PROJECT_NAME}.Sender ${CLUON_LIBRARIES})
-
-add_executable(${PROJECT_NAME}.Reciever ${CMAKE_CURRENT_SOURCE_DIR}/Reciever.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
-target_link_libraries(${PROJECT_NAME}.Reciever ${CLUON_LIBRARIES})
+add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+${CMAKE_BINARY_DIR}/messages.cpp ${CMAKE_CURRENT_SOURCE_DIR}/Sender.cpp ${CMAKE_CURRENT_SOURCE_DIR}/Reciever.cpp)
+target_link_libraries(${PROJECT_NAME} ${CLUON_LIBRARIES})
 
 enable_testing()
 add_executable(${PROJECT_NAME}-Runner TestCommunication.cpp

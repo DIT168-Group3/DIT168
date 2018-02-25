@@ -10,8 +10,8 @@
 #include "cluon/Envelope.hpp"
 #include "messages.hpp"
 
-class Reciever {
-public: int main(int /*argc*/, char** /*argv*/);
+class Reciever{
+	public:void recieveMsg();
 };
 
 #endif
