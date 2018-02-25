@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
 		od4.send(msg);
 		std::cout << "Message has been sent.... \n";
 	} else {
-
+	
 		// 5 test messages send to reciever
 		int i = 0;
 		while (i < 5) {
