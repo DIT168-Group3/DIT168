@@ -59,6 +59,22 @@ The way this will work is that we will have 3 fixed branches, and a branch for e
 
 ****************************************************************************************************
 
+# How to package and release the binaries of the project
+
+##### Running and testing the build:
+
+`docker build -t dit168 -f Dockerfile .`
+
+`docker run --rm -ti --net=host dit168`
+
+##### Saving and sharing Docker image:
+
+`docker save dit168 > dit168.tar`
+
+`cat dit168.tar | docker load`
+
+****************************************************************************************************
+
 ## How to contribute ?
 
 ##### Open the -> [CONTRIBUTE FORM](https://github.com/martincukal/DIT168/blob/master/CONTRIBUTING.md)

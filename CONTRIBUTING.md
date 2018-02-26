@@ -4,16 +4,3 @@ Contribution to this project will occur in seperate branches, depending on the f
 
 Each commit shall be made using a descriptive short summary, followed by a longer descriptive description for bigger commits, using addition symbol for addition(s) and subtraction symbol for subtraction(s) to the code, while bug fixes and refactoring will be represented using an (* asterisk). Bigger commits should be avoided however, and should be split into smaller commits to make it easier to undo changes and find issues. 
 
-# How to package and release the binaries of the project
-
-##### Running and testing the build:
-
-`docker build -t dit168 -f Dockerfile .`
-
-`docker run --rm -ti --net=host dit168`
-
-##### Saving and sharing Docker image:
-
-`docker save dit168 > dit168.tar`
-
-`cat dit168.tar | docker load`
