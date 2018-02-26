@@ -8,12 +8,12 @@ Each commit shall be made using a descriptive short summary, followed by a longe
 
 ##### Running and testing the build:
 
-`docker build -t myrepository/mydockerimage -f Dockerfile .`
+`docker build -t dit168 -f Dockerfile .`
 
-`docker run --rm -ti --net=host myrepository/mydockerimage`
+`docker run --rm -ti --net=host dit168`
 
 ##### Saving and sharing Docker image:
 
-`docker save myrepository/mydockerimage > dit168.tar`
+`docker save dit168 > dit168.tar`
 
 `cat dit168.tar | docker load`
