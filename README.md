@@ -1,12 +1,24 @@
 # DIT168-Project-Industrial IT and Embedded Systems 
-[GitHub Repository](https://github.com/martincukal/DIT168)
+Link: https://github.com/martincukal/DIT168
 
+*****************************************************************************************************
 
 ## Introduction
 
-The purpose of this repository is to be used for developing a software that controls a self-driving vehicle by working on an embedded system that can be divided into subsystems. The vehicle should be able to detect and follow lanes by using its camera and sensors, it will use vehicle-to-vehicle (V2V) communication technology to exchange data with other scaled cars. 
-To accomplish the project’s goal, the project will be designed and implemented using C++ as a main programming language, in addition to that, the teacher has provided us with a useful library that is necessary to be used during the project and it can be found at [OpenDaVINCI](http://opendavinci.cse.chalmers.se/www/#). Not to mention that the quality standards for this project are very important alongside testing and evaluating it.
+The purpose of this project is to develop a self-driving vehicle by working on an embedded system that can be divided into sub-systems. 
+As a group, we are going to follow some steps to achieve the project’s goal. The steps are:
 
+1- Working on the project (self-driving vehicle) according to the requirements (functional and non-functional) that are provided by the customer (teacher). 
+
+2- Researching for suitable algorithms that can be implemented, for lane detection, lane following and being used for vehicle-to-vehicle communication (V2V).
+
+3- Implementing and adapting desired algorithms to the project and making sure that they meet the customer’s requirements.
+ 
+4- Testing and evaluating the implemented algorithms.
+
+5- Finally, documenting the previous steps; hardware & software that’s used, algorithms (code) that are implemented, test methods that are applied and project’s retrospective (e.g. lessons learned).
+
+*****************************************************************************************************
 
 ## Git Workflow
 
@@ -14,8 +26,9 @@ The team will develop the project by making use of GIT’s branching system. The
 
 The way this will work is that we will have 3 fixed branches, and a branch for each feature. While working on each feature, the team will push the changes to the appropriate branch, and once the feature is ready to be tested, it will be pushed to the beta branch. This allows the team to work efficiently on seperate features, and then to focus on integration process afterwards. The beta branch will consist of all the features from the individual feature branches, finally the developer branch will be used for maintaining a stable version of the system. The master branch will be used to store the final version of the system, which will be used for deployment purposes and its goal is to be bug-free.
 
+****************************************************************************************************
 
-## Cloning, building and testing the project steps
+### Cloning, building and testing the project steps
 
 #### Linux OS: This example will change during the development of our system
 
@@ -33,19 +46,20 @@ The way this will work is that we will have 3 fixed branches, and a branch for e
 ##### 5. Run make.
 ` make `
 
-##### 6. Run the generated main binary to test the program.
-` ./main `
+##### 6. Run the generated binary to test the program.
+` ./Communication `
 
 ##### 7. Open a new terminal in the build directory.
 ` CTRL + SHIFT + N `
 
-##### 8. Run the generated main binary in the newly opened terminal.
-` ./main `
+##### 8. Run the generated binary in the newly opened terminal.
+` ./Communication `
 
 ##### 9. The program will require you to enter a number, after entering it check the second terminal a “ Received message : #number ” should be displayed.
 
+****************************************************************************************************
 
-## How to contribute
+## How to contribute ?
 
-##### Open the [CONTRIBUTE FORM](https://github.com/martincukal/DIT168/blob/master/CONTRIBUTING.md)
+##### Open the -> [CONTRIBUTE FORM](https://github.com/martincukal/DIT168/blob/master/CONTRIBUTING.md)
 
