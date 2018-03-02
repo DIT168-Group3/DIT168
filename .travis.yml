@@ -11,5 +11,6 @@ before_install:
 
   
 script:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
   - docker build -t dit168 -f Dockerfile .
   - docker run --rm -ti --net=host dit168
