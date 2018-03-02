@@ -11,5 +11,6 @@ before_install:
 
   
 script:
+  - docker login -u "stmarko" -p "password";
   - docker build -t dit168_group3 -f Dockerfile .
   - docker run --rm -ti --net=host dit168_group3
