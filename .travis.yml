@@ -1,15 +1,15 @@
 sudo: true
 dist: trusty
 
-services:
-  - docker
-
 language: cpp
-
-compiler: gcc
 
 before_install:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
   - sudo apt-get -y install docker-ce
+
+  
+script:
+  - docker build -t dit168 -f Dockerfile .
+  - docker run --rm -ti --net=host dit168
