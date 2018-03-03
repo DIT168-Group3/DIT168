@@ -9,7 +9,6 @@ before_install:
   - sudo apt-get update
   - sudo apt-get -y install docker-ce
 
-  
 script:
-  - docker events&
-  - docker run --net=host pontusla/carpet_compile
+  - docker login -u "stmarko" -p "password"
+  - docker build -t stmarko/dit168_group3 -f Dockerfile .
