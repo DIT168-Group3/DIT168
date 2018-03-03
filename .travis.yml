@@ -12,4 +12,4 @@ before_install:
 script:
   - docker events&
   - docker login -u "stmarko" -p "password"
-  - docker build -t stmarko/dit168_group3 -f Dockerfile .
+  - docker pull stmarko/dit168_group3
