@@ -79,3 +79,5 @@ The way this will work is that we will have 3 fixed branches, and a branch for e
 
 ##### Open the -> [CONTRIBUTE FORM](https://github.com/martincukal/DIT168/blob/master/CONTRIBUTING.md)
 
+[![Build Status](https://travis-ci.org/DIT168-Group3/DIT168.svg?branch=master)](https://travis-ci.org/DIT168-Group3/DIT168)
+
