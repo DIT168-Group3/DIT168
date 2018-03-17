@@ -8,42 +8,42 @@ using namespace std;
 
 void VControl::moveForward(cluon::OD4Session *od4_pointer){
 
-    std::cout << "MOVING_FORWARD..." << std::endl;
+    cout << "MOVING_FORWARD..." << endl;
     msgSteering.steeringAngle(angle);
     od4_pointer->send(msgSteering);
     msgPedal.percent(speed);
     od4_pointer->send(msgPedal);
-    std::this_thread::sleep_for(std::chrono::milliseconds(delay));
+    this_thread::sleep_for(chrono::milliseconds(delay));
 
 }
 
 void VControl::stop(cluon::OD4Session *od4_pointer){
 
-    std::cout << "STOPPING ..." << std::endl;
+    cout << "STOPPING ..." << endl;
     msgPedal.percent(stop_speed);
     od4_pointer->send(msgPedal);
-    std::this_thread::sleep_for(std::chrono::milliseconds(delay));
+    this_thread::sleep_for(chrono::milliseconds(delay));
 
 }
 
 void VControl::turnLeft(cluon::OD4Session *od4_pointer){
 
-    std::cout << "TURNING LEFT ..." << std::endl;
+    cout << "TURNING LEFT ..." << endl;
     msgSteering.steeringAngle(-(angle));
     od4_pointer->send(msgSteering);
     msgPedal.percent(speed);
     od4_pointer->send(msgPedal);
-    std::this_thread::sleep_for(std::chrono::milliseconds(delay));
+    this_thread::sleep_for(chrono::milliseconds(delay));
 }
 
 void VControl::turnRight(cluon::OD4Session *od4_pointer){
 
-    std::cout << "TURNING RIGHT ..." << std::endl;
+    cout << "TURNING RIGHT ..." << endl;
     msgSteering.steeringAngle(angle);
     od4_pointer->send(msgSteering);
     msgPedal.percent(speed);
     od4_pointer->send(msgPedal);
-    std::this_thread::sleep_for(std::chrono::milliseconds(delay));
+    this_thread::sleep_for(chrono::milliseconds(delay));
 }
 
 void VControl::set_speed(float new_speed){
