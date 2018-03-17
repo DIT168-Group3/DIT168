@@ -25,7 +25,7 @@
 
 `password: temppwd`
 
-##### 6. Create a new folder to test your build give a name in the format mm_dd_YOURNAME we will use this to trace the working builds.
+##### 6. Create a new folder to test your build, name it in the following format 'mm_dd_YOURNAME' we will use this to trace the working builds and authors.
 `mkdir mm_dd_YOURNAME`
 
 ##### 7. Go inside the folder and transfer your docker compose yml file using the following commands.
@@ -33,7 +33,9 @@
 
 `scp [file_name] debian@192.168.8.1:[target_path]`
 
-##### 8. Now you have to pull the image from your docker hub NOTE! you have to be connected to a wifi network with an internet connection , if not follow the steps from bellow.
+##### 8. Now you have to pull the image from your docker hub 
+###NOTE! 
+##### you have to be connected to a wifi network with an internet connection , if not follow the steps from 12 and resume at 9.
 `docker login `
 
 `docker pull reponame/dit168 `
@@ -46,18 +48,20 @@
 ###### or 
 `CTRL + C `
 
-##### 10. Did your build work ? If not use this command:
+##### 11. Did your build work ? If not use this command:
 `sudo work_harder now `
 
 
 
-### Saving and sharing Docker image as a tar file using scp if you cannot connect to a wifi network:
+### 12. Saving and sharing Docker image as a tar file using scp if you cannot connect to a wifi network:
 
 `docker save dit168 > dit168.tar`
 
+`scp dit168.tar debian@192.168.8.1:[target_path]`
+
 `cat dit168.tar | docker load`
 
-`scp dit168.tar debian@192.168.8.1:[target_path]`
+#### NOTE! you have to change the name of image in the docker compose yml file
 
 ****************************************************************************************************
 
