@@ -22,7 +22,7 @@ services:
 
     # Your microservice.
     example:
-        image: stmarko/vcontrol2
+        image: stmarko/vcontrol2 # the repo and name of the image (which is pulled from dockerhub)
         depends_on:
         - proxy-miniature-pwm-motor
         network_mode: "host"

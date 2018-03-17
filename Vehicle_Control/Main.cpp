@@ -20,11 +20,11 @@ VControl car;
 int main(int /*argc*/, char** /*argv*/) {
 
     od4p = new cluon::OD4Session (111,[](cluon::data::Envelope &&envelope) noexcept {
-        if (envelope.dataType() ==  opendlv::proxy::GroundSteeringReading::ID()) {
+        if (envelope.dataType() ==  (uint8_t) opendlv::proxy::GroundSteeringReading::ID()) {
             opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
             std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
         }
-        else if (envelope.dataType() ==  opendlv::proxy::PedalPositionReading::ID()) {
+        else if (envelope.dataType() ==  (uint8_t) opendlv::proxy::PedalPositionReading::ID()) {
             opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
             std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
         }
