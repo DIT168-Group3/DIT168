@@ -1,5 +1,0 @@
-/home/marko/proj/build/CMakeFiles/test.dir
-/home/marko/proj/build/CMakeFiles/main.dir
-/home/marko/proj/build/CMakeFiles/edit_cache.dir
-/home/marko/proj/build/CMakeFiles/main-Runner.dir
-/home/marko/proj/build/CMakeFiles/rebuild_cache.dir

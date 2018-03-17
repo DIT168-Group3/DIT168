@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/messages.cpp.o CMakeFiles/main.dir/Sender.cpp.o CMakeFiles/main.dir/Reciever.cpp.o  -o main -rdynamic -lcluon -lpthread 
