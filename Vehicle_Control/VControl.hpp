@@ -27,6 +27,7 @@ private:
     const float stop_speed = 0.0;
 
 public:
+    void move(cluon::OD4Session *od4_pointer);
     void moveForward(cluon::OD4Session *od4_pointer);
     void stop(cluon::OD4Session *od4_pointer);
     void turnLeft(cluon::OD4Session *od4_pointer);
