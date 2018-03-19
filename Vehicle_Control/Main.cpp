@@ -33,11 +33,12 @@ int main(int /*argc*/, char** /*argv*/) {
         else if (envelope.dataType() == (uint8_t) VehicleControl::ID()) {
             VehicleControl receivedMsg = cluon::extractMessage<VehicleControl>(std::move(envelope));
             cout << "Received data for next movement Angle: " << receivedMsg.steeringAngle()
-                 << "Speed: " <<  receivedMsg.pedalPosition() << "." << endl;
+                 << "Speed: " <<  receivedMsg.pedalPosition()
+                 << "Odometer: " <<  receivedMsg.odometerData() << "." << endl;
             //This message will be received from the v2v micro-service and than the movement will be executed
             car.set_angle(receivedMsg.steeringAngle());
             car.set_speed(receivedMsg.pedalPosition());
-            //missing odometer data
+            car.set_odometer_data(receivedMsg.odometerData());
             car.move(od4p);
         }
     });

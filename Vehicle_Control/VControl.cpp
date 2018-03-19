@@ -71,12 +71,20 @@ void VControl::set_angle(float new_angle){
     angle = new_angle;
 }
 
+void VControl::set_odometer_data(int odometer) {
+    odometer_data = odometer;
+}
+
 float VControl::get_speed(){
     return speed;
 }
 
 float VControl::get_angle(){
     return angle;
+}
+
+int VControl::get_odometer_data() {
+    return odometer_data;
 }
 
 

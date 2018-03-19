@@ -25,6 +25,7 @@ private:
     float speed = 0.4; // the default speed
     float angle = 0.0; // the default angle
     const float stop_speed = 0.0;
+    int odometer_data = 0;
 
 public:
     void move(cluon::OD4Session *od4_pointer);
@@ -35,10 +36,12 @@ public:
 
     VControl() = default; // default constructor
 
-    void set_speed(float speed); // setters for speed and angle
+    void set_speed(float speed); // setters for speed, angle and odometer data
     void set_angle(float angle);
-    float get_speed(); // getters for speed and angle
+    void set_odometer_data(int odometer);
+    float get_speed(); // getters for speed, angle and odometer data
     float get_angle();
+    int get_odometer_data();
 };
 
 #endif

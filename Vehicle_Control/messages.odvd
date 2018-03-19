@@ -9,5 +9,6 @@ message opendlv.proxy.PedalPositionReading [id = 1041] {
 message VehicleControl [id = 9999] {  
   float pedalPosition [id = 1];
   float steeringAngle [id = 2];
+  int odometerData [id = 3];
 }
 
