@@ -30,6 +30,16 @@ int main(int /*argc*/, char** /*argv*/) {
             opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
             cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << endl;
         }
+        else if (envelope.dataType() == (uint8_t) VehicleControl::ID()) {
+            VehicleControl receivedMsg = cluon::extractMessage<VehicleControl>(std::move(envelope));
+            cout << "Received data for next movement Angle: " << receivedMsg.steeringAngle()
+                 << "Speed: " <<  receivedMsg.pedalPosition() << "." << endl;
+            //This message will be received from the v2v micro-service and than the movement will be executed
+            car.set_angle(receivedMsg.steeringAngle());
+            car.set_speed(receivedMsg.pedalPosition());
+            //missing odometer data
+            car.move(od4p);
+        }
     });
 
     if(od4p->isRunning() == 0)
