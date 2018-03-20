@@ -246,6 +246,7 @@ void V2VService::leaderStatus(uint8_t speed, uint8_t steeringAngle, uint8_t dist
  * @param ip - ip of the car
  * @param activePort - the port which the car uses to listen on the incoming udp receiver
  * @param id - the Group ID
+ * Author: Martin Chukaleski 20.03
  */
 void V2VService::add_ip(std::string ip_s,std::uint16_t activePort, std::string id){
 
