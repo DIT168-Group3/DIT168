@@ -7,10 +7,10 @@ To run this example run the script.sh file.
 ./script.sh
 ```
 
-The Docker image is provided for amd64 platforms. To change to a different CID session, simply provide a different parameter in the script.sh file "--cid='YourChannel'"
+The Docker image is provided for amd64 platforms. To change to a different CID session, simply provide a different parameter in the script.sh file in the following line:
 
 ```
-docker run --rm -ti --net=host -p 8085:8085 webgui --cid=111
+docker run --rm -ti --net=host -p 8085:8085 webgui --cid='YourChannel'
 ```
 
 If the port 8085 is occupied by some program on your machine than change --port parameter at the last line of the Dockerfile.
