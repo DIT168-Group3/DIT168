@@ -3,25 +3,36 @@
 
 #include <iomanip>
 #include <unistd.h>
-#include <vector>
-#include <thread>
-#include <sstream>
-#include <chrono>
 #include <sys/time.h>
-#include<bits/stdc++.h>
 #include "cluon/OD4Session.hpp"
 #include "cluon/UDPSender.hpp"
 #include "cluon/UDPReceiver.hpp"
 #include "cluon/Envelope.hpp"
 #include "Messages.hpp"
+#include <iostream>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/ioctl.h>
+#include <netinet/in.h>
+#include <net/if.h>
+#include <unistd.h>
+#include <arpa/inet.h>
 
+
+/** ADD YOUR CAR_IP AND GROUP_ID HERE:  *****************/
+
+static  std::string YOUR_CAR_IP;
+static const std::string YOUR_GROUP_ID  = "3";
+
+/********************************************************/
+/** DON'T CHANGE STUFF BELOW THIS LINE. *****************/
+/********************************************************/
 
 static const std::string DEMO_CAR_IP = "127.0.0.1";
 static const std::string DEMO_NTP_IP = "127.0.0.1";
-static const std::string DEMO_GROUP_ID = "4";
 
 static const int BROADCAST_CHANNEL = 200;
-static const int DEFAULT_PORT = 50001; //50001
+static const int DEFAULT_PORT = 50001;
 
 static const int ANNOUNCE_PRESENCE = 1001;
 static const int FOLLOW_REQUEST = 1002;
@@ -32,6 +43,8 @@ static const int FOLLOWER_STATUS = 3001;
 
 class V2VService {
 public:
+    std::map <std::string, std::string> presentCars;
+
     V2VService();
 
     void announcePresence();
@@ -40,21 +53,18 @@ public:
     void stopFollow(std::string vehicleIp);
     void leaderStatus(uint8_t speed, uint8_t steeringAngle, uint8_t distanceTraveled);
     void followerStatus(uint8_t speed, uint8_t steeringAngle, uint8_t distanceFront, uint8_t distanceTraveled);
-    void add_ip(std::string ip,std::uint16_t activePort,std::string id);
-    void print_ip();
+    std::string getIP();
 
 private:
     std::string leaderIp;
     std::string followerIp;
-    std::map<std::string, std::string> ip_collection;
-
 
     std::shared_ptr<cluon::OD4Session>  broadcast;
     std::shared_ptr<cluon::UDPReceiver> incoming;
     std::shared_ptr<cluon::UDPSender>   toLeader;
     std::shared_ptr<cluon::UDPSender>   toFollower;
 
-    //static uint32_t getTime();
+    static uint32_t getTime();
     static std::pair<int16_t, std::string> extract(std::string data);
     template <class T>
     static std::string encode(T msg);
