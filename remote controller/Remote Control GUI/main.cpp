@@ -1,5 +1,22 @@
+/**
+  * Author: Martin Chukaleski 28.03
+  */
+
 #include <gtkmm.h>
 #include <iostream>
+#include <cstdint>
+#include <chrono>
+#include <sstream>
+#include <thread>
+
+#include "cluon/OD4Session.hpp"
+#include "cluon/Envelope.hpp"
+
+#include "messages.hpp"
+#include "VControl.hpp"
+
+cluon::OD4Session *od4p;
+VControl car;
 
 using namespace std;
 
@@ -9,6 +26,8 @@ void on_right_press();
 void on_left_press();
 
 int main(int argc, char* argv[]){
+	od4p = new cluon::OD4Session(111, [](cluon::data::Envelope &&envelope) noexcept {});
+
 	Gtk::Main kit(argc,argv);
 
 	Gtk::Window window;
@@ -19,7 +38,7 @@ int main(int argc, char* argv[]){
 	Gtk::Button right("RIGHT");
 	Gtk::Button stop("STOP");
 
-	window.set_default_size(500, 50);
+	window.set_default_size(400, 50);
 	window.set_title("GROUP3 GUI REMOTE CONTROLLER");
 	window.set_position(Gtk::WIN_POS_CENTER);
 
@@ -79,16 +98,21 @@ int main(int argc, char* argv[]){
 
 void on_forward_press(){
 	cout << "==> MOVE FORWARD" << endl;
+	car.moveForward(od4p);
 }
 
 void on_right_press(){
 	cout << "==> TURN RIGHT" << endl;
+	car.turnRight(od4p);
+
 }
 
 void on_left_press(){
 	cout << "==> TURN LEFT" << endl;
+	car.turnLeft(od4p);
 }
 
 void on_stop_rel(){
 	cout << "<== STOP" << endl;
+    car.stop(od4p);
 }
