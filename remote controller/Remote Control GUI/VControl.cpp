@@ -39,28 +39,25 @@ void VControl::moveForward(cluon::OD4Session *od4_pointer){
     od4_pointer->send(msgSteering);
     msgPedal.percent(speed);
     od4_pointer->send(msgPedal);
-    this_thread::sleep_for(chrono::milliseconds(delay));
 
 }
 
 void VControl::turnLeft(cluon::OD4Session *od4_pointer){
 
     cout << "TURNING LEFT ..." << endl;
-    msgSteering.steeringAngle(-(angle));
+    msgSteering.steeringAngle(15);
     od4_pointer->send(msgSteering);
     msgPedal.percent(speed);
     od4_pointer->send(msgPedal);
-    this_thread::sleep_for(chrono::milliseconds(delay));
 }
 
 void VControl::turnRight(cluon::OD4Session *od4_pointer){
 
     cout << "TURNING RIGHT ..." << endl;
-    msgSteering.steeringAngle(angle);
+    msgSteering.steeringAngle(-(15));
     od4_pointer->send(msgSteering);
     msgPedal.percent(speed);
     od4_pointer->send(msgPedal);
-    this_thread::sleep_for(chrono::milliseconds(delay));
 }
 
 void VControl::set_speed(float new_speed){
