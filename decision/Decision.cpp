@@ -13,8 +13,9 @@ int main(int argc, char **argv) {
     // convert the arg to correct type
     const uint16_t cid = (uint16_t) std::stoi(arguments["cid"]);
     const uint16_t runFreq = (uint16_t) std::stoi(arguments["freq"]);
+    const bool VERBOSE{arguments.count("verbose") != 0};
 
-    cout << "CID: " << cid << " FREQ: " << runFreq << "\n" << endl;
+    //cout << "CID: " << cid << " FREQ: " << runFreq << "\n" << endl;
 
     //std::shared_ptr<Decision> decision = std::make_shared<Decision>();
 
@@ -49,9 +50,10 @@ int main(int argc, char **argv) {
 
 
     //Send the leaderStatus commands with the runtime freq
-    auto printSensorData{[&distance]() -> bool {
-
-        std::cout << "Speed: " << speed << " Angle: "<< angle << " Front Distance: " << distance << std::endl;
+    auto printSensorData{[&distance, &speed, &angle, &VERBOSE]() -> bool {
+        if(VERBOSE){
+            std::cout << "Speed: " << speed << " Angle: "<< angle << " Front Distance: " << distance << std::endl;
+        }
 
         return true;
     }};
