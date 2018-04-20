@@ -47,12 +47,11 @@ int main(int argc, char **argv) {
         return -1;
     }
 
-    std::cout << "Speed: " << speed << " Angle: "<< angle << " Front Distance: " << distance << std::endl;
 
     //Send the leaderStatus commands with the runtime freq
     auto printSensorData{[&distance]() -> bool {
 
-        std::cout << "\n Distance: " << distance;
+        std::cout << "Speed: " << speed << " Angle: "<< angle << " Front Distance: " << distance << std::endl;
 
         return true;
     }};
