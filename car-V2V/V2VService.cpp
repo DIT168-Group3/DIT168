@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
     auto arguments = cluon::getCommandlineArguments(argc, argv);
     //convert and assign values
     const std::string carIP = arguments["ip"];
-    const std::string carID = arguments["id"];
+    const std::string carID = "3";
     const uint16_t cid = (uint16_t) std::stoi(arguments["cid"]);
     const std::string leaderId = arguments["leader"];
     const uint16_t freq = (uint16_t) std::stoi(arguments["freq"]);
@@ -63,8 +63,8 @@ V2VService::V2VService(std::string carIP, std::string groupID) {
      * The broadcast field contains a reference to the broadcast channel which is an OD4Session. This is where
      * AnnouncePresence messages will be received.
      */
-    carIP = carIP;
-    groupID = groupID;
+    carIp = carIP;
+    groupId = groupID;
 
     broadcast =
 
@@ -86,7 +86,7 @@ V2VService::V2VService(std::string carIP, std::string groupID) {
                                                     }
                                                 });
 
-    cluon::OD4Session to_decision{141};
+    cluon::OD4Session *to_decision =  new cluon::OD4Session{141};
 
     /*
      * Each car declares an incoming UDPReceiver for messages directed at them specifically. This is where messages
@@ -160,8 +160,8 @@ V2VService::V2VService(std::string carIP, std::string groupID) {
                                                              msgSpeed.position(leader_speed);
 
                                                              //sending the messages to the decision layer
-                                                             to_decision.send(msgAngle);
-                                                             to_decision.send(msgSpeed);
+                                                             to_decision->send(msgAngle);
+                                                             to_decision->send(msgSpeed);
 
                                                              break;
                                                          }
@@ -177,8 +177,8 @@ V2VService::V2VService(std::string carIP, std::string groupID) {
 void V2VService::announcePresence() {
     if (!followerIp.empty() || !leaderIp.empty()) return;
     AnnouncePresence announcePresence;
-    announcePresence.vehicleIp(carIP);
-    announcePresence.groupId(groupID);
+    announcePresence.vehicleIp(carIp);
+    announcePresence.groupId(groupId);
     broadcast->send(announcePresence);
 }
 
@@ -325,7 +325,7 @@ T V2VService::decode(std::string data) {
 }
 
 std::string V2VService::getIPfromID(std::string id){
-    std::cout << "IP IS" << presentCars[id] << std::endl;
+    //std::cout << "IP IS" << presentCars[id] << std::endl;
     return presentCars[id];
 }
 

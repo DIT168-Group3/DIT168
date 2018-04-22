@@ -49,8 +49,8 @@ public:
     std::string getIPfromID(std::string id);
 
 private:
-    std::string carIP;
-    std::string groupID;
+    std::string carIp;
+    std::string groupId;
     std::string leaderIp;
     std::string followerIp;
 
