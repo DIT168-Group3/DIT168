@@ -5,19 +5,17 @@ int main(int argc, char **argv) {
     //extract command line arguments using cluon
     auto arguments = cluon::getCommandlineArguments(argc, argv);
     //convert and assign values
+    const std::string carIP = arguments["ip"];
+    const std::string carID = arguments["id"];
     const uint16_t cid = (uint16_t) std::stoi(arguments["cid"]);
     const std::string leaderId = arguments["leader"];
     const uint16_t freq = (uint16_t) std::stoi(arguments["freq"]);
-
     //used to indicate that this car is in following mode
     const bool FOLLOWING{arguments.count("following") != 0};
-    const std::string carIP = arguments["ip"];
-    const std::string carID = arguments["id"];
+
 
     std::shared_ptr<V2VService> v2vService = std::make_shared<V2VService>(carIP, carID);
-
 	std::cout << "leaderID: " << leaderId << "Following mode: " << FOLLOWING << std::endl;
-
 
     float speed = 0;
     float angle = 0;
@@ -38,7 +36,7 @@ int main(int argc, char **argv) {
 
     auto communication{[&v2vService, &speed, &angle, &cid, &FOLLOWING, &leaderId]() -> bool {
 
-        //spamming with ann presence
+        //sending ann presence messages until leader or follower ip are empty
         v2vService->announcePresence();
 
         std::string ip = v2vService->getIPfromID(leaderId);
