@@ -33,8 +33,10 @@ int main(int argc, char **argv) {
                                   angle = groundSteeringReading.groundSteering();
                               }
                           });
+    //od4 session used to send commands to decision layer
+    cluon::OD4Session internal{141};
 
-    auto communication{[&v2vService, &speed, &angle, &cid, &FOLLOWING, &leaderId]() -> bool {
+    auto communication{[&v2vService, &speed, &angle, &cid, &FOLLOWING, &leaderId, &internal]() -> bool {
 
         //sending ann presence messages until leader or follower ip are empty
         v2vService->announcePresence();
@@ -43,9 +45,38 @@ int main(int argc, char **argv) {
         //after announcing presence sending a follow request to the ip with the predefined ID in arguments
          v2vService->followRequest(ip);
 
+
         //using command line arguments to check whether car is set up to follow or lead
         if(FOLLOWING){
-            //do not send any messages just follow from UDP inbox
+            opendlv::proxy::GroundSteeringReading msgAngle;
+            opendlv::proxy::PedalPositionReading msgSpeed;
+
+            //do not send any messages just follow queue generated from UDP inbox
+            if(!v2vService->commandQ.empty()){
+
+                //saving the leader angle and speed
+                float leader_angle = v2vService->commandQ.front().steeringAngle();
+                float leader_speed = v2vService->commandQ.front().speed();
+
+                //deleting last read message
+                v2vService->commandQ.pop();
+
+                std::cout << "Speed: " << leader_speed << " Angle: " << leader_angle << std::endl;
+
+                msgAngle.groundSteering(leader_angle);
+                //std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                msgSpeed.position(leader_speed);
+                internal.send(msgSpeed);
+            }else{
+                //change the speed to 0
+                msgSpeed.position(0.0);
+                internal.send(msgSpeed);
+            }
+
+
+
+
+
         }else{
             v2vService->leaderStatus(speed, angle, 5);
             std::cout << "Speed: " << speed <<"Angle: " << angle << std::endl;
@@ -86,7 +117,6 @@ V2VService::V2VService(std::string carIP, std::string groupID) {
                                                     }
                                                 });
 
-    cluon::OD4Session *to_decision =  new cluon::OD4Session{141};
 
     /*
      * Each car declares an incoming UDPReceiver for messages directed at them specifically. This is where messages
@@ -94,7 +124,7 @@ V2VService::V2VService(std::string carIP, std::string groupID) {
      */
     incoming =
             std::make_shared<cluon::UDPReceiver>("0.0.0.0", DEFAULT_PORT,
-                                                 [this,&to_decision](std::string &&data, std::string &&sender, std::chrono::system_clock::time_point &&ts) noexcept {
+                                                 [this](std::string &&data, std::string &&sender, std::chrono::system_clock::time_point &&ts) noexcept {
                                                      std::cout << "[UDP] ";
                                                      std::pair<int16_t, std::string> msg = extract(data);
 
@@ -151,17 +181,10 @@ V2VService::V2VService(std::string carIP, std::string groupID) {
                                                                        << leaderStatus.speed() << " Angle: "
                                                                        << leaderStatus.steeringAngle() << std::endl;
 
-                                                             float leader_angle = leaderStatus.steeringAngle();
-                                                             float leader_speed = leaderStatus.speed();
+                                                            // float leader_angle = leaderStatus.steeringAngle();
+                                                            // float leader_speed = leaderStatus.speed();
 
-                                                             opendlv::proxy::GroundSteeringReading msgAngle;
-                                                             msgAngle.groundSteering(leader_angle);
-                                                             opendlv::proxy::PedalPositionReading msgSpeed;
-                                                             msgSpeed.position(leader_speed);
-
-                                                             //sending the messages to the decision layer
-                                                             to_decision->send(msgAngle);
-                                                             to_decision->send(msgSpeed);
+                                                             commandQ.push(leaderStatus);
 
                                                              break;
                                                          }

@@ -2,6 +2,8 @@
 #define V2V_PROTOCOL_DEMO_V2VSERVICE_H
 
 #include <iomanip>
+#include <queue>
+#include <chrono>
 #include <unistd.h>
 #include <sys/time.h>
 #include "cluon/OD4Session.hpp"
@@ -47,6 +49,9 @@ public:
     void followerStatus();
 
     std::string getIPfromID(std::string id);
+
+    std::queue<LeaderStatus> commandQ;
+
 
 private:
     std::string carIp;
