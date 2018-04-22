@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
             opendlv::proxy::GroundSteeringReading msgAngle;
             opendlv::proxy::PedalPositionReading msgSpeed;
 
-            //do not send any messages just follow queue generated from UDP inbox
+            //just follow messages queue generated from UDP inbox
             if(!v2vService->commandQ.empty()){
 
                 //saving the leader angle and speed
@@ -63,8 +63,10 @@ int main(int argc, char **argv) {
 
                 std::cout << "Speed: " << leader_speed << " Angle: " << leader_angle << std::endl;
 
+                //sending messages to decision layer
                 msgAngle.groundSteering(leader_angle);
-                //std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                internal.send(msgAngle);
+
                 msgSpeed.position(leader_speed);
                 internal.send(msgSpeed);
             }else{
