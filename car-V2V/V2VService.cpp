@@ -11,10 +11,10 @@ int main(int argc, char **argv) {
 
     //used to indicate that this car is in following mode
     const bool FOLLOWING{arguments.count("following") != 0};
-    const std::string IP = arguments["ip"];
-    const std::string ID = arguments["id"];
+    const std::string carIP = arguments["ip"];
+    const std::string carID = arguments["id"];
 
-    std::shared_ptr<V2VService> v2vService = std::make_shared<V2VService>(IP, ID);
+    std::shared_ptr<V2VService> v2vService = std::make_shared<V2VService>(carIP, carID);
 
 	std::cout << "leaderID: " << leaderId << "Following mode: " << FOLLOWING << std::endl;
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
         std::string ip = v2vService->getIPfromID(leaderId);
         //after announcing presence sending a follow request to the ip with the predefined ID in arguments
          v2vService->followRequest(ip);
-        
+
         //using command line arguments to check whether car is set up to follow or lead
         if(FOLLOWING){
             //do not send any messages just follow from UDP inbox
