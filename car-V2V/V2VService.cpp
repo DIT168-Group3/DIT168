@@ -1,164 +1,196 @@
 #include "V2VService.hpp"
 
-int main() {
-    std::shared_ptr<V2VService> v2vService = std::make_shared<V2VService>();
-    cluon::OD4Session od4{111};
+int main(int argc, char **argv) {
 
-    while (1) {
-        int choice;
-        std::string groupId;
-        std::cout << "Which message would you like to send?" << std::endl;
-        std::cout << "(1) AnnouncePresence" << std::endl;
-        std::cout << "(2) FollowRequest" << std::endl;
-        std::cout << "(3) FollowResponse" << std::endl;
-        std::cout << "(4) StopFollow" << std::endl;
-        std::cout << "(5) LeaderStatus" << std::endl;
-        std::cout << "(6) FollowerStatus" << std::endl;
-	std::cout << "(7) LeaderStatus2" << std::endl;
-	std::cout << "(8) LeaderStatus3" << std::endl;
-        std::cout << "(9) LeaderStatus3" << std::endl;
-        std::cout << "(#) Nothing, just quit." << std::endl;
-        std::cout << ">> ";
-        std::cin >> choice;
+    //extract command line arguments using cluon
+    auto arguments = cluon::getCommandlineArguments(argc, argv);
+    //convert and assign values
+    const std::string carIP = arguments["ip"];
+    const std::string carID = "3";
+    const uint16_t cid = (uint16_t) std::stoi(arguments["cid"]);
+    //cid2 used to send messages to decision layer
+    const uint16_t cid2 = (uint16_t) std::stoi(arguments["cid2"]);
+    const std::string leaderId = arguments["leader"];
+    const uint16_t freq = (uint16_t) std::stoi(arguments["freq"]);
+    //used to indicate that this car is in following mode
+    const bool FOLLOWING{arguments.count("following") != 0};
 
-        switch (choice) {
-            case 1: v2vService->announcePresence(); break;
-            case 2: {
-                std::cout << "Which group do you want to follow?" << std::endl;
-                std::cin >> groupId;
-                if (v2vService->presentCars.find(groupId) != v2vService->presentCars.end())
-                    v2vService->followRequest(v2vService->presentCars[groupId]);
-                else std::cout << "Sorry, unable to locate that groups vehicle!" << std::endl;
-                break;
+
+    std::shared_ptr<V2VService> v2vService = std::make_shared<V2VService>(carIP, carID);
+	std::cout << "leaderID: " << leaderId << "Following mode: " << FOLLOWING << std::endl;
+
+    float speed = 0;
+    float angle = 0;
+    //get the speed and angle from the car
+    cluon::OD4Session od4(cid,
+                          [&speed, &angle](cluon::data::Envelope &&envelope) noexcept {
+                              if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
+                                  opendlv::proxy::PedalPositionReading pedalPositionReading =
+                                          cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
+                                  speed = pedalPositionReading.position();
+                              }
+                              if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
+                                  opendlv::proxy::GroundSteeringReading groundSteeringReading =
+                                          cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
+                                  angle = groundSteeringReading.groundSteering();
+                              }
+                          });
+    //od4 session used to send commands to decision layer
+    cluon::OD4Session internal{cid2};
+
+    auto communication{[&v2vService, &speed, &angle, &cid, &FOLLOWING, &leaderId, &internal]() -> bool {
+
+        //sending ann presence messages until leader or follower ip are empty
+        v2vService->announcePresence();
+        //getting the ip with the leaderID
+        std::string ip = v2vService->getIPfromID(leaderId);
+
+        //using command line arguments to check whether car is set up to follow or lead
+        if(FOLLOWING){
+            //after announcing presence sending a follow request to the ip with the predefined ID in arguments
+            v2vService->followRequest(ip);
+
+            opendlv::proxy::GroundSteeringReading msgAngle;
+            opendlv::proxy::PedalPositionReading msgSpeed;
+
+            //just follow messages queue generated from UDP inbox
+            if(!v2vService->commandQ.empty()){
+
+                //saving the leader angle and speed
+                float leader_angle = v2vService->commandQ.front().steeringAngle();
+                float leader_speed = v2vService->commandQ.front().speed();
+
+                //deleting last read message
+                v2vService->commandQ.pop();
+
+                std::cout << "Speed: " << leader_speed << " Angle: " << leader_angle << std::endl;
+
+                //sending messages to decision layer
+                msgAngle.groundSteering(leader_angle);
+                internal.send(msgAngle);
+
+                msgSpeed.position(leader_speed);
+                internal.send(msgSpeed);
+            }else{
+                //change the speed to 0
+                msgSpeed.position(0.0);
+                internal.send(msgSpeed);
             }
-            case 3: v2vService->followResponse(); break;
-            case 4: {
-                std::cout << "Which group do you want to stop follow?" << std::endl;
-                std::cin >> groupId;
-                if (v2vService->presentCars.find(groupId) != v2vService->presentCars.end())
-                    v2vService->stopFollow(v2vService->presentCars[groupId]);
-                else std::cout << "Sorry, unable to locate that groups vehicle!" << std::endl;
-                break;
-            }
-            case 5: {
-		
-			auto leaderStatus{[&v2vService]() -> bool {
-			v2vService->leaderStatus(0.4, 15, 0);
-				return true;
-		    }};
 
-		    od4.timeTrigger(5, leaderStatus);
-		}
-		
-            case 7: v2vService->leaderStatus(0.4, 15, 0);break;
-	    case 8: v2vService->leaderStatus(0.4, -15, 0);break;
-	    case 9: v2vService->leaderStatus(0.4, 0, 0);break;
-            default: exit(0);
+        }else{
+            v2vService->leaderStatus(speed, angle, 5);
+            std::cout << "Speed: " << speed <<"Angle: " << angle << std::endl;
         }
-    }
+        return true;
+    }};
+    od4.timeTrigger(freq, communication);
 }
 
 /**
  * Implementation of the V2VService class as declared in V2VService.hpp
  */
-V2VService::V2VService() {
+V2VService::V2VService(std::string carIP, std::string groupID) {
     /*
      * The broadcast field contains a reference to the broadcast channel which is an OD4Session. This is where
      * AnnouncePresence messages will be received.
      */
+    carIp = carIP;
+    groupId = groupID;
+
     broadcast =
-        std::make_shared<cluon::OD4Session>(BROADCAST_CHANNEL,
-          [this](cluon::data::Envelope &&envelope) noexcept {
-              std::cout << "[OD4] ";
-              switch (envelope.dataType()) {
-                  case ANNOUNCE_PRESENCE: {
-                      AnnouncePresence ap = cluon::extractMessage<AnnouncePresence>(std::move(envelope));
-                      std::cout << "received 'AnnouncePresence' from '"
-                                << ap.vehicleIp() << ":" << ap.activePort() << "', GroupID '"
-                                << ap.groupId() << "'!" << std::endl;
 
-                      presentCars[ap.groupId()] = ap.vehicleIp();
+            std::make_shared<cluon::OD4Session>(BROADCAST_CHANNEL,
+                                                [this](cluon::data::Envelope &&envelope) noexcept {
+                                                    std::cout << "[OD4] ";
+                                                    switch (envelope.dataType()) {
+                                                        case ANNOUNCE_PRESENCE: {
+                                                            AnnouncePresence ap = cluon::extractMessage<AnnouncePresence>(std::move(envelope));
+                                                            std::cout << "received 'AnnouncePresence' from '"
+                                                                      << ap.vehicleIp() << "', GroupID '"
+                                                                      << ap.groupId() << "'!" << std::endl;
 
-                      break;
-                  }
-                  default: std::cout << "¯\\_(ツ)_/¯" << std::endl;
-              }
-          });
+                                                            presentCars[ap.groupId()] = ap.vehicleIp();
+
+                                                            break;
+                                                        }
+                                                        default: std::cout << "¯\\_(ツ)_/¯" << std::endl;
+                                                    }
+                                                });
+
 
     /*
      * Each car declares an incoming UDPReceiver for messages directed at them specifically. This is where messages
      * such as FollowRequest, FollowResponse, StopFollow, etc. are received.
      */
     incoming =
-        std::make_shared<cluon::UDPReceiver>("0.0.0.0", DEFAULT_PORT,
-           [this](std::string &&data, std::string &&sender, std::chrono::system_clock::time_point &&ts) noexcept {
-               std::cout << "[UDP] ";
-               std::pair<int16_t, std::string> msg = extract(data);
+            std::make_shared<cluon::UDPReceiver>("0.0.0.0", DEFAULT_PORT,
+                                                 [this](std::string &&data, std::string &&sender, std::chrono::system_clock::time_point &&ts) noexcept {
+                                                     std::cout << "[UDP] ";
+                                                     std::pair<int16_t, std::string> msg = extract(data);
 
-               switch (msg.first) {
-                   case FOLLOW_REQUEST: {
-                       FollowRequest followRequest = decode<FollowRequest>(msg.second);
-                       std::cout << "received1 '" << followRequest.LongName()
-                                 << "' from '" << sender << "'!" << std::endl;
+                                                     switch (msg.first) {
+                                                         case FOLLOW_REQUEST: {
+                                                             FollowRequest followRequest = decode<FollowRequest>(msg.second);
+                                                             std::cout << "received '" << followRequest.LongName()
+                                                                       << "' from '" << sender << "'!" << std::endl;
 
-                       // After receiving a FollowRequest, check first if there is currently no car already following.
-                       if (followerIp.empty()) {
-                           unsigned long len = sender.find(':');    // If no, add the requester to known follower slot
-                           followerIp = sender.substr(0, len);      // and establish a sending channel.
-                           toFollower = std::make_shared<cluon::UDPSender>(followerIp, DEFAULT_PORT);
-                           followResponse();
-                       }
-                       break;
-                   }
-                   case FOLLOW_RESPONSE: {
-                       FollowResponse followResponse = decode<FollowResponse>(msg.second);
-                       std::cout << "received2 '" << followResponse.LongName()
-                                 << "' with NTPServerIP '" << followResponse.ntpServerIp()
-                                 << "' from '" << sender << "'!" << std::endl;
+                                                             // After receiving a FollowRequest, check first if there is currently no car already following.
+                                                             if (followerIp.empty()) {
+                                                                 unsigned long len = sender.find(':');    // If no, add the requester to known follower slot
+                                                                 followerIp = sender.substr(0, len);      // and establish a sending channel.
+                                                                 toFollower = std::make_shared<cluon::UDPSender>(followerIp, DEFAULT_PORT);
+                                                                 followResponse();
+                                                             }
+                                                             break;
+                                                         }
+                                                         case FOLLOW_RESPONSE: {
+                                                             FollowResponse followResponse = decode<FollowResponse>(msg.second);
+                                                             std::cout << "received '" << followResponse.LongName()
+                                                                       << "' from '" << sender << "'!" << std::endl;
+                                                             break;
+                                                         }
+                                                         case STOP_FOLLOW: {
+                                                             StopFollow stopFollow = decode<StopFollow>(msg.second);
+                                                             std::cout << "received '" << stopFollow.LongName()
+                                                                       << "' from '" << sender << "'!" << std::endl;
 
-                       /* TODO: implement NTP synchronisation */
+                                                             // Clear either follower or leader slot, depending on current role.
+                                                             unsigned long len = sender.find(':');
+                                                             if (sender.substr(0, len) == followerIp) {
+                                                                 followerIp = "";
+                                                                 toFollower.reset();
+                                                             }
+                                                             else if (sender.substr(0, len) == leaderIp) {
+                                                                 leaderIp = "";
+                                                                 toLeader.reset();
+                                                             }
+                                                             break;
+                                                         }
+                                                         case FOLLOWER_STATUS: {
+                                                             FollowerStatus followerStatus = decode<FollowerStatus>(msg.second);
+                                                             std::cout << "received '" << followerStatus.LongName()
+                                                                       << "' from '" << sender << "'!" << std::endl;
 
-                       break;
-                   }
-                   case STOP_FOLLOW: {
-                       StopFollow stopFollow = decode<StopFollow>(msg.second);
-                       std::cout << "received3 '" << stopFollow.LongName()
-                                 << "' from '" << sender << "'!" << std::endl;
 
-                       // Clear either follower or leader slot, depending on current role.
-                       unsigned long len = sender.find(':');
-                       if (sender.substr(0, len) == followerIp) {
-                           followerIp = "";
-                           toFollower.reset();
-                       }
-                       else if (sender.substr(0, len) == leaderIp) {
-                           leaderIp = "";
-                           toLeader.reset();
-                       }
-                       break;
-                   }
-                   case FOLLOWER_STATUS: {
-                       FollowerStatus followerStatus = decode<FollowerStatus>(msg.second);
-                       std::cout << "received4 '" << followerStatus.LongName()
-                                 << "' from '" << sender << "'!" << std::endl;
+                                                             break;
+                                                         }
+                                                         case LEADER_STATUS: {
+                                                             LeaderStatus leaderStatus = decode<LeaderStatus>(msg.second);
+                                                             std::cout << "received '" << leaderStatus.LongName()
+                                                                       << "' from '" << sender << " Speed: "
+                                                                       << leaderStatus.speed() << " Angle: "
+                                                                       << leaderStatus.steeringAngle() << std::endl;
 
-                       /* TODO: implement lead logic (if applicable) */
+                                                            // float leader_angle = leaderStatus.steeringAngle();
+                                                            // float leader_speed = leaderStatus.speed();
 
-                       break;
-                   }
-                   case LEADER_STATUS: {
-                       LeaderStatus leaderStatus = decode<LeaderStatus>(msg.second);
-                       //int angle = static_cast<int>(leaderStatus.steeringAngle());
-                       std::cout << "received '" << leaderStatus.LongName()
-                                 << "' from '" << sender << "'!" << "\n Speed: "<< leaderStatus.speed() << " Time: " << leaderStatus.timestamp() << " Angle: "<< leaderStatus.steeringAngle() << std::endl;
+                                                             commandQ.push(leaderStatus);
 
-                       /* TODO: implement follow logic */
-
-                       break;
-                   }
-                   default: std::cout << "¯\\_(ツ)_/¯" << std::endl;
-               }
-           });
+                                                             break;
+                                                         }
+                                                         default: std::cout << "¯\\_(ツ)_/¯" << std::endl;
+                                                     }
+                                                 });
 }
 
 /**
@@ -166,11 +198,10 @@ V2VService::V2VService() {
  * about the sending vehicle, including: IP, port and the group identifier.
  */
 void V2VService::announcePresence() {
-    if (!followerIp.empty()) return;
+    if (!followerIp.empty() || !leaderIp.empty()) return;
     AnnouncePresence announcePresence;
-    announcePresence.vehicleIp(YOUR_CAR_IP);
-    announcePresence.activePort(DEFAULT_PORT);
-    announcePresence.groupId(YOUR_GROUP_ID);
+    announcePresence.vehicleIp(carIp);
+    announcePresence.groupId(groupId);
     broadcast->send(announcePresence);
 }
 
@@ -182,6 +213,7 @@ void V2VService::announcePresence() {
  */
 void V2VService::followRequest(std::string vehicleIp) {
     if (!leaderIp.empty()) return;
+    std::cout << "SENDING FOLLOW REQUEST TO: " << vehicleIp << std::endl;
     leaderIp = vehicleIp;
     toLeader = std::make_shared<cluon::UDPSender>(leaderIp, DEFAULT_PORT);
     FollowRequest followRequest;
@@ -195,7 +227,6 @@ void V2VService::followRequest(std::string vehicleIp) {
 void V2VService::followResponse() {
     if (followerIp.empty()) return;
     FollowResponse followResponse;
-    followResponse.ntpServerIp(DEMO_NTP_IP);
     toFollower->send(encode(followResponse));
 }
 
@@ -227,15 +258,9 @@ void V2VService::stopFollow(std::string vehicleIp) {
  * @param distanceFront - distance to nearest object in front of the car sending the status message
  * @param distanceTraveled - distance traveled since last reading
  */
-void V2VService::followerStatus(uint8_t speed, uint8_t steeringAngle, uint8_t distanceFront,
-                                uint8_t distanceTraveled) {
+void V2VService::followerStatus() {
     if (leaderIp.empty()) return;
     FollowerStatus followerStatus;
-    followerStatus.timestamp(getTime());
-    followerStatus.speed(speed);
-    followerStatus.steeringAngle(steeringAngle);
-    followerStatus.distanceFront(distanceFront);
-    followerStatus.distanceTraveled(distanceTraveled);
     toLeader->send(encode(followerStatus));
 }
 
@@ -321,3 +346,9 @@ T V2VService::decode(std::string data) {
     tmp.accept(v);
     return tmp;
 }
+
+std::string V2VService::getIPfromID(std::string id){
+    //std::cout << "IP IS" << presentCars[id] << std::endl;
+    return presentCars[id];
+}
+
