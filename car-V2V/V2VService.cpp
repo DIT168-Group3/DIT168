@@ -42,12 +42,14 @@ int main(int argc, char **argv) {
         v2vService->announcePresence();
 
         std::string ip = v2vService->getIPfromID(leaderId);
-        //after announcing presence sending a follow request to the ip with the predefined ID in arguments
-         v2vService->followRequest(ip);
+
 
 
         //using command line arguments to check whether car is set up to follow or lead
         if(FOLLOWING){
+            //after announcing presence sending a follow request to the ip with the predefined ID in arguments
+            v2vService->followRequest(ip);
+
             opendlv::proxy::GroundSteeringReading msgAngle;
             opendlv::proxy::PedalPositionReading msgSpeed;
 
