@@ -25,7 +25,8 @@ int main(int argc, char **argv) {
     float speed = 0; // the leader speed
     float angle = 0; // the leader angle
     float distance = 0; // the internal distance
-    const float obstacle_distance = 0.12;
+    const float obstacle_distance = 0.22;
+    bool abs = true;
 
     //Get the speed, angle and distance from the remote or v2v protocol and store them
     cluon::OD4Session od4(cid,[&speed, &angle, &distance](cluon::data::Envelope &&envelope) noexcept {
@@ -52,15 +53,23 @@ int main(int argc, char **argv) {
     }
 
     //Send the movement commands with the runtime freq
-    auto printSensorData{[&distance, &speed, &angle, &VERBOSE, &internal, &obstacle_distance]() -> bool {
+    auto printSensorData{[&distance, &speed, &angle, &VERBOSE, &internal, &obstacle_distance, &abs]() -> bool {
         if(VERBOSE){
             std::cout << "Speed: " << speed << " Angle: "<< angle << " Front Distance: " << distance << std::endl;
         }
         //if sensor detects a smaller value than 0.12 we stop the car so it doesn't crash
         if(obstacle_distance >= distance){
             //sending a message to stop the car
+            if(abs){
+                //little bit reverse kind of traction control
+                msgPedal.percent(-0.5);
+                internal.send(msgPedal);
+                this_thread::sleep_for(chrono::milliseconds(75));
+                abs = false;
+            }
             msgPedal.percent(0.0);
             internal.send(msgPedal);
+
             if(VERBOSE){
                 cout << "Obstacle detected stopping car" << endl;
             }
@@ -70,6 +79,8 @@ int main(int argc, char **argv) {
             internal.send(msgSteering);
             msgPedal.percent(speed);
             internal.send(msgPedal);
+            //changing the abs to true so its activated again
+            abs = true;
         }
         return true;
     }};
