@@ -1,79 +1,15 @@
-language: cpp
-
-sudo: false
+sudo: true
 dist: trusty
 
-compiler:
-  - gcc
-
-os: 
-  - linux
-
-matrix:
-  include:
-    # works on Precise and Trusty
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
-      env:
-         - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-
-    # works on Precise and Trusty
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-5
-      env:
-         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-
-    # works on Precise and Trusty
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-6
-      env:
-        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-
-    # works on Precise and Trusty
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-7
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+language: cpp
 
 before_install:
-    - eval "${MATRIX_EVAL}"
-    - sudo add-apt-repository ppa:chrberger/libcluon
-    - sudo apt-get update
-    - sudo apt-get install libcluon
-    - sudo apt-get install socat
-    - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y install docker-ce
 
-before_script:
-  - mkdir build
-  - cd build
-  - cmake ..
-
-script: make
-
-addons:
-  apt:
-    sources:
-      - george-edison55-precise-backports
-    packages:
-      - cmake-data
-      - cmake
+script:
+  - docker events&
+  - docker login -u "stmarko" -p "password"
+  - docker pull stmarko/dit168_group3
