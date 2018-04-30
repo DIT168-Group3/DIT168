@@ -8,6 +8,7 @@ int main(int argc, char **argv) {
     const std::string carIP = arguments["ip"];
     const std::string carID = "3";
     const uint16_t cid = (uint16_t) std::stoi(arguments["cid"]);
+    const int counter = std::stoi(arguments["counter"]);
     //cid2 used to send messages to decision layer
     const uint16_t cid2 = (uint16_t) std::stoi(arguments["cid2"]);
     const std::string leaderId = arguments["leader"];
@@ -37,8 +38,9 @@ int main(int argc, char **argv) {
                           });
     //od4 session used to send commands to decision layer
     cluon::OD4Session internal{cid2};
+    static int count = 0;
 
-    auto communication{[&v2vService, &speed, &angle, &cid, &FOLLOWING, &leaderId, &internal]() -> bool {
+    auto communication{[&v2vService, &speed, &angle, &cid, &FOLLOWING, &leaderId, &internal, &counter]() -> bool {
 
         //sending ann presence messages until leader or follower ip are empty
         v2vService->announcePresence();
@@ -49,6 +51,7 @@ int main(int argc, char **argv) {
         if(FOLLOWING){
             //after announcing presence sending a follow request to the ip with the predefined ID in arguments
             v2vService->followRequest(ip);
+	        v2vService->followerStatus();
 
             opendlv::proxy::GroundSteeringReading msgAngle;
             opendlv::proxy::PedalPositionReading msgSpeed;
@@ -62,15 +65,17 @@ int main(int argc, char **argv) {
 
                 //deleting last read message
                 v2vService->commandQ.pop();
-
-                std::cout << "Speed: " << leader_speed << " Angle: " << leader_angle << std::endl;
+                count++;
 
                 //sending messages to decision layer
-                msgAngle.groundSteering(leader_angle);
-                internal.send(msgAngle);
-
                 msgSpeed.position(leader_speed);
                 internal.send(msgSpeed);
+
+                if(count > counter){
+                    msgAngle.groundSteering(leader_angle);
+                    internal.send(msgAngle);
+                    count = 0;
+                }
             }else{
                 //change the speed to 0
                 msgSpeed.position(0.0);
