@@ -8,8 +8,11 @@ int main(int argc, char **argv) {
     const std::string carIP = arguments["ip"];
     const std::string carID = "3";
     const uint16_t cid = (uint16_t) std::stoi(arguments["cid"]);
+    //the delay that we need to calibrate the cars
+    const int counter = std::stoi(arguments["counter"]);
     //cid2 used to send messages to decision layer
     const uint16_t cid2 = (uint16_t) std::stoi(arguments["cid2"]);
+    //the group id that we want to follow
     const std::string leaderId = arguments["leader"];
     const uint16_t freq = (uint16_t) std::stoi(arguments["freq"]);
     //used to indicate that this car is in following mode
@@ -37,8 +40,10 @@ int main(int argc, char **argv) {
                           });
     //od4 session used to send commands to decision layer
     cluon::OD4Session internal{cid2};
+    static int count = 0;
+    static float old_angle = 1;
 
-    auto communication{[&v2vService, &speed, &angle, &cid, &FOLLOWING, &leaderId, &internal]() -> bool {
+    auto communication{[&v2vService, &speed, &angle, &cid, &FOLLOWING, &leaderId, &internal, &counter]() -> bool {
 
         //sending ann presence messages until leader or follower ip are empty
         v2vService->announcePresence();
@@ -49,6 +54,7 @@ int main(int argc, char **argv) {
         if(FOLLOWING){
             //after announcing presence sending a follow request to the ip with the predefined ID in arguments
             v2vService->followRequest(ip);
+	        v2vService->followerStatus();
 
             opendlv::proxy::GroundSteeringReading msgAngle;
             opendlv::proxy::PedalPositionReading msgSpeed;
@@ -56,21 +62,31 @@ int main(int argc, char **argv) {
             //just follow messages queue generated from UDP inbox
             if(!v2vService->commandQ.empty()){
 
+                float decrease = 0.01;
                 //saving the leader angle and speed
                 float leader_angle = v2vService->commandQ.front().steeringAngle();
                 float leader_speed = v2vService->commandQ.front().speed();
 
+                if(leader_speed != 0) leader_speed -= decrease;
+                    
                 //deleting last read message
                 v2vService->commandQ.pop();
 
-                std::cout << "Speed: " << leader_speed << " Angle: " << leader_angle << std::endl;
-
                 //sending messages to decision layer
-                msgAngle.groundSteering(leader_angle);
-                internal.send(msgAngle);
-
                 msgSpeed.position(leader_speed);
                 internal.send(msgSpeed);
+                
+		//counter logic for the delay of the steering angle
+                if(leader_angle != old_angle){
+                    count++;
+                }
+                if(count >= counter){
+                    msgAngle.groundSteering(leader_angle);
+                    internal.send(msgAngle);
+                    old_angle = leader_angle;
+                    count = 0;
+                }
+
             }else{
                 //change the speed to 0
                 msgSpeed.position(0.0);
