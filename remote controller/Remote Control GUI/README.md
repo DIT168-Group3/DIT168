@@ -25,5 +25,5 @@
 ` make `
 
 ##### 6. Run the generated binary to test the program.
-` ./RemoteGUI.main `
+` ./RemoteGUI.main --cid=###`
 
