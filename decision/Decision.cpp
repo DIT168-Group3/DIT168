@@ -53,11 +53,11 @@ int main(int argc, char **argv) {
     }
 
     //Send the movement commands with the runtime freq
-    auto printSensorData{[&distance, &speed, &angle, &VERBOSE, &internal, &obstacle_distance, &abs]() -> bool {
+    auto decision{[&distance, &speed, &angle, &VERBOSE, &internal, &obstacle_distance, &abs]() -> bool {
         if(VERBOSE){
             std::cout << "Speed: " << speed << " Angle: "<< angle << " Front Distance: " << distance << std::endl;
         }
-        //if sensor detects a smaller value than 0.12 we stop the car so it doesn't crash
+        //if sensor detects a smaller value than 0.22 we stop the car so it doesn't crash
         if(obstacle_distance >= distance){
             //sending a message to stop the car
             if(abs){
@@ -84,6 +84,6 @@ int main(int argc, char **argv) {
         }
         return true;
     }};
-    od4.timeTrigger(runFreq, printSensorData);
+    od4.timeTrigger(runFreq, decision);
 }
 
