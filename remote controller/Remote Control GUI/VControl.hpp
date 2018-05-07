@@ -22,7 +22,7 @@ private:
     const int delay = 1000; // the delay used between commands
     opendlv::proxy::GroundSteeringReading msgSteering;
     opendlv::proxy::PedalPositionReading msgPedal;
-    float speed = 0.4; // the default speed
+    float speed = 0.15; // the default speed // 0.1 0.2 front // -0.6  
     float angle = 0.0; // the default angle
     const float stop_speed = 0.0;
     int odometer_data = 0;

@@ -28,7 +28,12 @@ void on_left_press();
 
 int main(int argc, char* argv[]){
 
-	od4p = new cluon::OD4Session(111, [](cluon::data::Envelope &&envelope) noexcept {});
+	auto arguments = cluon::getCommandlineArguments(argc, argv);
+    	// convert the arg to correct type
+    	//the cid is used to receive and store data about distance, angle and speed
+    	const uint16_t cid = (uint16_t) std::stoi(arguments["cid"]);
+
+	od4p = new cluon::OD4Session(cid, [](cluon::data::Envelope &&envelope) noexcept {});
 	
 	//creating the main kit from gtk
 	Gtk::Main kit(argc,argv);
@@ -36,14 +41,17 @@ int main(int argc, char* argv[]){
 	//Initializing the box and window
 	Gtk::Window window;
 	Gtk::Box box;
+
+    Gtk::Image rightImg("right.png");
 	
 	//initializing the buttons
-	Gtk::Button forward("FORWARD");
-	Gtk::Button left("LEFT");
-	Gtk::Button right("RIGHT");
+	Gtk::Button forward(" ^ ");
+	Gtk::Button left("<");
+	Gtk::Button right(">");
 	Gtk::Button stop("STOP");
+
 	
-	//setting the size, title and position
+	//setting the size, title and position // 400 , 50
 	window.set_default_size(400, 50);
 	window.set_title("GROUP3 GUI REMOTE CONTROLLER");
 	window.set_position(Gtk::WIN_POS_CENTER);
