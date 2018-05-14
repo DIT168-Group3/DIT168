@@ -24,7 +24,7 @@ services:
         image: martincukal/v2vcid
         network_mode: "host"
         restart: always
-        command: "/opt/V2V.Service --cid=140 --cid2=141 --freq=5 --ip=192.168.1.237 --following=1 --leader=5"
+        command: "/opt/V2V.Service --cid=140 --cid2=141 --freq=10 --ip=192.168.43.223 --following=1  --leader=5 --counter=15"
 
     decision:
         image: martincukal/decision

@@ -4,6 +4,17 @@ int main(int argc, char **argv) {
 
     //extract command line arguments using cluon
     auto arguments = cluon::getCommandlineArguments(argc, argv);
+
+    if (0 == arguments.count("cid") || 
+    0 == arguments.count("cid2") || 
+    0 == arguments.count("freq") || 
+    0 == arguments.count("ip")) {
+    std::cerr << "Leader Example: " << argv[0] << " --cid=140 --cid2=141 --freq=10 --ip=192.168.43.223 --leader=5 --counter=15" << std::endl;
+    std::cerr << "Follower Example: " << argv[0] << " --cid=140 --cid2=141 --freq=10 --ip=192.168.43.223 --following=1  --leader=5 --counter=15" << std::endl;
+    return -1;
+  }
+
+
     //convert and assign values
     const std::string carIP = arguments["ip"];
     const std::string carID = "3";
@@ -363,6 +374,9 @@ T V2VService::decode(std::string data) {
     return tmp;
 }
 
+/**
+ * Function that retrieves the ip from the groupID map where the key is the ID
+ */
 std::string V2VService::getIPfromID(std::string id){
     //std::cout << "IP IS" << presentCars[id] << std::endl;
     return presentCars[id];
